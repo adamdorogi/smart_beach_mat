@@ -35,6 +35,10 @@
    every couple of seconds.
 */
 
+/* TODO:
+ * - remove `Serial` functions.
+ */
+
 // Bluetooth
 #include <BLEDevice.h>
 #include <BLEServer.h>
@@ -57,41 +61,53 @@
 #define LED_PIN    5
 #define BUTTON_PIN 0
 
+// Time period
+#define ADVERTISING_PERIOD  2000
+#define NOTIFICATION_PERIOD 5000
 
-BLEServer* pServer = NULL;
-BLECharacteristic* uvIndexCharacteristic = NULL;
-bool deviceConnected = false;
-bool oldDeviceConnected = false;
+
+BLEServer* pServer;
+BLECharacteristic* uvIndexCharacteristic;
+BLEAdvertising* pAdvertising;
+
+Adafruit_SI1145 sensor;
+
 bool isAdvertising = false;
-uint32_t value = 0;
+bool isConnected = false;
 
-class MyServerCallbacks: public BLEServerCallbacks {
-    void onConnect(BLEServer* pServer) {
-      deviceConnected = true;
-      isAdvertising = false;
-      Serial.println("Connected to device.");
-    };
-
-    void onDisconnect(BLEServer* pServer) {
-      deviceConnected = false;
-      Serial.println("Disconnected from device.");
-    }
-};
-
-Adafruit_SI1145 sensor = Adafruit_SI1145();
-
-void setup() {
-  // Set up LED.
-  pinMode(LED_PIN, OUTPUT);
-  
-  Serial.begin(115200);
-
-  // Check for UV sensor.
-  if (!sensor.begin()) {
-    Serial.println("Didn't find SI1145");
-    while (!sensor.begin());
+/*
+ * Callbacks associated with the operation of a `BLEServer`.
+ */
+class ServerCallbacks: public BLEServerCallbacks {
+  /*
+   * Handle a new client connection.
+   */
+  void onConnect(BLEServer* pServer) {
+    isConnected = true;
+    Serial.println("Device connected.");
   }
 
+  /*
+   * Handle an existing client disconnection.
+   */
+  void onDisconnect(BLEServer* pServer) {
+    isConnected = false;
+    Serial.println("Device disconnected.");
+  }
+};
+
+/*
+ * Run once, after each powerup or reset of the device.
+ */
+void setup() {
+  Serial.begin(115200);
+  
+  // Set up LED pin.
+  pinMode(LED_PIN, OUTPUT);
+  
+  // Check for UV sensor.
+  sensor = Adafruit_SI1145();
+  while (!sensor.begin());
   Serial.println("UV sensor detected.");
 
   // Create the BLE device.
@@ -99,7 +115,7 @@ void setup() {
 
   // Create the BLE server.
   pServer = BLEDevice::createServer();
-  pServer->setCallbacks(new MyServerCallbacks());
+  pServer->setCallbacks(new ServerCallbacks());
 
   // Create the BLE service.
   BLEService* environmentalSensingService = pServer->createService(ENVIRONMENTAL_SENSING_SERVICE_UUID);
@@ -115,62 +131,51 @@ void setup() {
 
   // Start the service.
   environmentalSensingService->start();
-}
-
-void startAdvertising() {
-  // Create advertisement data.
+  
   BLEAdvertisementData oAdvertisementData = BLEAdvertisementData();
 
-  // Start advertising.
-  BLEAdvertising* pAdvertising = pServer->getAdvertising();
+  // Set up advertisement.
+  pAdvertising = BLEDevice::getAdvertising();
   pAdvertising->setScanResponse(false);
   pAdvertising->setAdvertisementData(oAdvertisementData);
-  pServer->startAdvertising();
+}
+
+/*
+ * Loop continuously while the device is powered on.
+ */
+void loop() {
+  // Advertise on button press.
+  if (digitalRead(BUTTON_PIN) == LOW && !isAdvertising && !isConnected) {
+    startAdvertising();
+    delay(ADVERTISING_PERIOD);
+    stopAdvertising();
+  }
+
+  // Notify connected device of UV index.
+  if (isConnected) {
+    float uvIndex = sensor.readUV()/100.0;
+    Serial.print("UV: ");  Serial.println(uvIndex);
+    
+    uvIndexCharacteristic->setValue(uvIndex);
+    uvIndexCharacteristic->notify();
+    delay(NOTIFICATION_PERIOD);
+  }
+}
+
+/*
+ * Start advertising the `BLEDevice`.
+ */
+void startAdvertising() {
+  pAdvertising->start();
   isAdvertising = true;
   Serial.println("Advertisement started.");
 }
 
-void loop() {
-  // notify changed value
-  if (deviceConnected) {
-    Serial.println("===================");
-    Serial.print("Vis: "); Serial.println(sensor.readVisible());
-    Serial.print("IR: "); Serial.println(sensor.readIR());
-    
-    // Uncomment if you have an IR LED attached to LED pin!
-    //Serial.print("Prox: "); Serial.println(sensor.readProx());
-  
-    float UVindex = sensor.readUV();
-    // the index is multiplied by 100 so to get the
-    // integer index, divide by 100!
-    UVindex /= 100.0;  
-    Serial.print("UV: ");  Serial.println(UVindex);
-    
-    uvIndexCharacteristic->setValue(UVindex);
-    uvIndexCharacteristic->notify();
-    delay(1000); // bluetooth stack will go into congestion, if too many packets are sent, in 6 hours test i was able to go as low as 3ms
-  }
-  // disconnecting
-  if (!deviceConnected && oldDeviceConnected) {
-    delay(500); // give the bluetooth stack the chance to get things ready
-//    pServer->startAdvertising(); // restart advertising
-//    Serial.println("start advertising");
-    oldDeviceConnected = deviceConnected;
-  }
-  // connecting
-  if (deviceConnected && !oldDeviceConnected) {
-    // do stuff here on connecting
-    oldDeviceConnected = deviceConnected;
-  }
-    
-  if (digitalRead(BUTTON_PIN) == LOW && !isAdvertising) {
-    startAdvertising();
-  }
-
-  if (isAdvertising) {
-    digitalWrite(LED_PIN, HIGH);
-    delay(500);
-    digitalWrite(LED_PIN, LOW);
-    delay(500);
-  }
+/*
+ * Stop advertising the `BLEDevice`
+ */
+void stopAdvertising() {
+  pAdvertising->stop();
+  isAdvertising = false;
+  Serial.println("Advertisement ended.");
 }
