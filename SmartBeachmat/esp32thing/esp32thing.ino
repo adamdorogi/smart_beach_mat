@@ -34,20 +34,16 @@
    A connect hander associated with the server starts a background task that performs notification
    every couple of seconds.
 */
+
+// Bluetooth
 #include <BLEDevice.h>
 #include <BLEServer.h>
 #include <BLEUtils.h>
 #include <BLE2902.h>
 
+// UV
 #include <Wire.h>
 #include "Adafruit_SI1145.h"
-
-BLEServer* pServer = NULL;
-BLECharacteristic* uvIndexCharacteristic = NULL;
-bool deviceConnected = false;
-bool oldDeviceConnected = false;
-bool isAdvertising = false;
-uint32_t value = 0;
 
 // Service UUIDs (https://www.bluetooth.com/specifications/gatt/services)
 #define ENVIRONMENTAL_SENSING_SERVICE_UUID "181A"
@@ -57,9 +53,17 @@ uint32_t value = 0;
 #define UV_INDEX_CHARACTERISTIC_UUID      "2A76"
 #define BATTERY_LEVEL_CHARACTERISTIC_UUID "2A19"
 
+// Pins
 #define LED_PIN    5
 #define BUTTON_PIN 0
 
+
+BLEServer* pServer = NULL;
+BLECharacteristic* uvIndexCharacteristic = NULL;
+bool deviceConnected = false;
+bool oldDeviceConnected = false;
+bool isAdvertising = false;
+uint32_t value = 0;
 
 class MyServerCallbacks: public BLEServerCallbacks {
     void onConnect(BLEServer* pServer) {
