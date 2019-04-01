@@ -1,3 +1,6 @@
+# Miscellaneous
+*.lock
+
 # IntelliJ related
 *.iml
 *.ipr
