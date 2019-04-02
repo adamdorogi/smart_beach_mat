@@ -1,3 +1,6 @@
+# Sensitive information
+credentials.php
+
 # Miscellaneous
 *.lock
 
