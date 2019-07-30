@@ -1,0 +1,38 @@
+# MySQL authenticator error
+`mysqli_real_connect(): The server requested authentication method unknown to the client [caching_sha2_password]`
+
+Fix:
+`alter user 'YOUR_USERNAME'@'localhost' identified with mysql_native_password by 'YOUR_PASSWORD';`
+
+# Enable `.htaccess`
+In the `/etc/apache2/httpd.conf` file, change:
+```
+<Directory "/your/web/server/">
+    ...
+    AllowOverride none
+    ...
+</Directory>
+```
+
+To:
+```
+<Directory "/your/web/server/">
+    ...
+    AllowOverride All
+    ...
+</Directory>
+```
+
+# Enable `mod_rewrite`
+In the `/etc/apache2/httpd.conf` file, uncomment `LoadModule rewrite_module libexec/apache2/mod_rewrite.so`.
+
+# PHP Notes/Tips
+- Get specific header value:
+  ```
+  $headers = getallheaders();
+  $headers['Authorization'];
+  ```
+- Get POST body:
+  ```
+  var_dump($_POST)
+  ```
