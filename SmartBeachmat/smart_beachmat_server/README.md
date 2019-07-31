@@ -1,8 +1,15 @@
-# MySQL authenticator error
+# Troubleshooting
+## MySQL authentication error
 `mysqli_real_connect(): The server requested authentication method unknown to the client [caching_sha2_password]`
 
 Fix:
-`alter user 'YOUR_USERNAME'@'localhost' identified with mysql_native_password by 'YOUR_PASSWORD';`
+- `alter user 'YOUR_USERNAME'@'localhost' identified with mysql_native_password by 'YOUR_PASSWORD';`
+
+## MySQL authentication error 2
+`mysqli_real_connect(): (HY000/2002): No such file or directory`
+
+Fix:
+- Start MySQL server in System Preferences.
 
 # Enable `.htaccess`
 In the `/etc/apache2/httpd.conf` file, change:
