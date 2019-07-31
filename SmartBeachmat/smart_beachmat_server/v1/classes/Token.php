@@ -9,17 +9,20 @@ class Token implements Entity {
 
         $method = $_SERVER['REQUEST_METHOD'];
         $headers = getallheaders();
+        $token = str_replace('Bearer ', '', $headers['Authorization']); // Extract Bearer token from Authorization header.
 
         switch ($method) {
             case 'POST': // Create a token.
                 $this->create($_POST);
                 break;
             case 'GET': // Get all device ID's belonging to each token of account.
-                // Extract Bearer token from Authorization header.
-                $token = str_replace('Bearer ', '', $headers['Authorization']);
                 $this->read($token);
                 break;
             case 'DELETE': // Delete a token.
+                parse_str(file_get_contents("php://input"), $_DELETE);
+                $device_id = $_DELETE['device_id'];
+
+                $this->delete($device_id, $token);
                 break;
             default:
                 throw new Exception('Method not allowed.', 405);
@@ -69,11 +72,10 @@ class Token implements Entity {
         // Successfully logged on, return token.
         echo json_encode(['token' => $token]);
     }
-
+    
+    // Get all device IDs corresponding to each of the account's tokens.
+    // Note: For security reasons, list of tokens will not be returned.
     public function read($token) {
-        // Get the device ID corresponding to each of the account's tokens.
-        // Note: For security reasons, list of tokens will not be returned.
-
         // Get all device IDs belonging to user with given token.
         $statement = $this->connection->prepare("SELECT INET_NTOA(`ip_address`) as `ip_address`, BIN_TO_UUID(`device_id`) AS `device_id`, `device_name`, `created_on` FROM `token` WHERE `account_id` IN (SELECT `account_id` FROM `token` WHERE `token` = :token)");
         $statement->bindParam(':token', $token);
@@ -89,10 +91,23 @@ class Token implements Entity {
         echo json_encode($results);
     }
 
-    public function update($id, $attributes) {
+    public function update($id, $attribute, $attributes) {
     }
 
-    public function delete($id) {
+    public function delete($device_id, $token) {
+        // Get all device IDs belonging to user with given token.
+        $statement = $this->connection->prepare("DELETE FROM `token` WHERE `device_id` = UUID_TO_BIN(:device_id) AND `account_id` IN (SELECT `account_id` FROM (SELECT `account_id` FROM `token` WHERE `token` = :token) AS temp)");
+        $statement->bindParam(':device_id', $device_id);
+        $statement->bindParam(':token', $token);
+        $statement->execute();
+
+        // If no results are returned, no device ID was found corresponding to the given token.
+        if ($statement->rowCount() < 1) {
+            throw new Exception('Invalid access token or device ID.', 401);
+        }
+
+        // Successfully deleted token.
+        http_response_code(204);
     }
 }
 ?>
