@@ -24,13 +24,13 @@ interface Entity {
      * @param id The ID (primary key) of the entity to update.
      * @param attributes The attributes of the entity to update.
      */
-    function update($id, $attributes);
+    function update($token, $attribute, $attributes);
 
     /**
      * Remove an entity from the database.
      * 
      * @param id The ID (primary key) of the entity to delete.
      */
-    function delete($id);
+    function delete($id, $token);
 }
 ?>
