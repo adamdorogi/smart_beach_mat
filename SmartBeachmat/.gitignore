@@ -1,5 +1,5 @@
-# Sensitive information
-credentials.php
+# Configuration file containing sensitive information
+config.php
 
 # Miscellaneous
 *.lock
