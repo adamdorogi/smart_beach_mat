@@ -1,3 +1,7 @@
+# TODO
+- Custom exceptions with fixed status code and message.
+- Verify email/password functions
+
 # Troubleshooting
 ## MySQL authentication error
 `mysqli_real_connect(): The server requested authentication method unknown to the client [caching_sha2_password]`
