@@ -1,28 +1,38 @@
 <?php
-require_once __DIR__.'/../interfaces/Entity.php';
-
-class Token implements Entity {
+/**
+ * A class used to represent a `token` entity in the database
+ *
+ * The `Token` class represents a `token` entity in the database,
+ * and provides create, read, and delete operations for the entity.
+ *
+ * @author Adam Dorogi-Kaposi
+ */
+class Token {
     private $connection;
 
+    /**
+     * Constructor.
+     * 
+     * @param object $connection The `PDO` connection to the MySQL database.
+     * @throws Exception if an invalid HTTP method is used.
+     */
     public function __construct($connection) {
         $this->connection = $connection;
 
-        $method = $_SERVER['REQUEST_METHOD'];
         $headers = getallheaders();
         $token = str_replace('Bearer ', '', $headers['Authorization']); // Extract Bearer token from Authorization header.
 
-        switch ($method) {
-            case 'POST': // Create a token.
+        switch ($_SERVER['REQUEST_METHOD']) {
+            case 'POST': // Create a `token`.
                 $this->create($_POST);
                 break;
-            case 'GET': // Get all device ID's belonging to each token of account.
+            case 'GET': // Get `device_id`s of `token`.
                 $this->read($token);
                 break;
-            case 'DELETE': // Delete a token.
-                parse_str(file_get_contents("php://input"), $_DELETE);
-                $device_id = $_DELETE['device_id'];
+            case 'DELETE': // Delete a `token`.
+                parse_str(file_get_contents('php://input'), $_DELETE);
 
-                $this->delete($device_id, $token);
+                $this->delete($token, $_DELETE['device_id']);
                 break;
             default:
                 throw new Exception('Method not allowed.', 405);
@@ -30,58 +40,69 @@ class Token implements Entity {
         }
     }
 
-    public function create($attributes) {
+    /**
+     * Create a new `token` in the database with the `account` of given `email`, and `password`.
+     * 
+     * @param string[] $attributes The attributes of the `account`. Possible values: `email`, `password`.
+     * @throws Exception if the email or password of the `account` is incorrect, or attributes
+     *                   (`ip_address`, `device_id`) are in an invalid format.
+     */
+    private function create($attributes) {
+        // Extract attributes.
         $email = $attributes['email'];
         $password = $attributes['password'];
-
-        // Get account password from database.
-        $statement = $this->connection->prepare("SELECT `id`, `password` FROM `account` WHERE `email` = :email");
-        $statement->bindParam(':email', $email);
-        $statement->execute();
-
-        // Verify the retrieved password.
-        $account = $statement->fetch(PDO::FETCH_ASSOC);
-
-        if (!password_verify($password, $account['password'])) {
-            throw new Exception('Incorrect email or password.', 401);
-        }
-
-        // Email and password is correct.
-
-        // Generate cryptographically random token.
-        $token =  bin2hex(random_bytes(20));
-
         $ip_address = $attributes['ip_address'];
         $device_id = $attributes['device_id'];
         $device_name = $attributes['device_name'];
 
+        // Select the `account` `id` and `password` of the given `email` from database.
+        $statement = $this->connection->prepare('SELECT `id`, `password` FROM `account` WHERE `email` = :email');
+        $statement->bindParam(':email', $email);
+        $statement->execute();
+
+        $account = $statement->fetch(PDO::FETCH_ASSOC);
+        $retrieved_password_hash = $account['password'];
+        $account_id = $account['id'];
+
+        // Verify the retrieved password.
+        if (!password_verify($password, $retrieved_password_hash)) {
+            throw new Exception('Incorrect email or password.', 401);
+        }
+
+        // Generate cryptographically random token.
+        $token =  bin2hex(random_bytes(20));
+
         // Add token to database.
-        $statement = $this->connection->prepare("INSERT INTO `token` (`token`, `account_id`, `ip_address`, `device_id`, `device_name`) VALUES (:token, :account_id, INET_ATON(:ip_address), UUID_TO_BIN(:device_id), :device_name)");
+        $statement = $this->connection->prepare('INSERT INTO `token` (`token`, `account_id`, `ip_address`, `device_id`, `device_name`) VALUES (:token, :account_id, INET_ATON(:ip_address), UUID_TO_BIN(:device_id), :device_name)');
         $statement->bindParam(':token', $token);
-        $statement->bindParam(':account_id', $account['id']);
+        $statement->bindParam(':account_id', $account_id);
         $statement->bindParam(':ip_address', $ip_address);
         $statement->bindParam(':device_id', $device_id);
         $statement->bindParam(':device_name', $device_name);
         $statement->execute();
 
-        // Check for any errors.
-        if ($statement->errorCode() !== "00000") {
-            throw new Exception('Invalid IP address or device ID.', 400);
+        if ($statement->rowCount() < 1) {
+            // `ip_address` or `device_id` is in an invalid format.
+            throw new Exception('Could not create token.', 400);
         }
 
-        // Successfully logged on, return token.
+        // Successfully logged on, return `token`.
         echo json_encode(['token' => $token]);
     }
     
-    // Get all device IDs corresponding to each of the account's tokens.
-    // Note: For security reasons, list of tokens will not be returned.
-    public function read($token) {
+    /**
+     * Get all `device_id`s belonging to the `account` of the given `token`.
+     * For security reasons, list of tokens belonging to the `account` will not be returned.
+     * 
+     * @param string $token The token belonging to the `account` for which the attributes will be returned.
+     * @throws Exception if the `token` is invalid.
+     */
+    private function read($token) {
         // Get all device IDs belonging to user with given token.
-        $statement = $this->connection->prepare("SELECT INET_NTOA(`ip_address`) as `ip_address`, BIN_TO_UUID(`device_id`) AS `device_id`, `device_name`, `created_on` FROM `token` WHERE `account_id` IN (SELECT `account_id` FROM `token` WHERE `token` = :token)");
+        $statement = $this->connection->prepare('SELECT INET_NTOA(`ip_address`) as `ip_address`, BIN_TO_UUID(`device_id`) AS `device_id`, `device_name`, `created_on` FROM `token` WHERE `account_id` IN (SELECT `account_id` FROM `token` WHERE `token` = :token)');
         $statement->bindParam(':token', $token);
         $statement->execute();
 
-        // If no results are returned, no account ID was found with the given token (i.e. token doesn't exist).
         if ($statement->rowCount() < 1) {
             throw new Exception('Invalid access token.', 401);
         }
@@ -91,19 +112,23 @@ class Token implements Entity {
         echo json_encode($results);
     }
 
-    public function update($id, $attribute, $attributes) {
-    }
-
-    public function delete($device_id, $token) {
-        // Get all device IDs belonging to user with given token.
-        $statement = $this->connection->prepare("DELETE FROM `token` WHERE `device_id` = UUID_TO_BIN(:device_id) AND `account_id` IN (SELECT `account_id` FROM (SELECT `account_id` FROM `token` WHERE `token` = :token) AS temp)");
+    /**
+     * Delete the `token` with the given `device_id`.
+     * 
+     * @param string $token The token belonging to the `account`.
+     * @param string $device_id The device ID of the token to be deleted.
+     * @throws Exception if the `token` is invalid, or the `device_id` does not belong to `account` of the `token`.
+     */
+    private function delete($token, $device_id) {
+        // Delete the `token` with the given `device_id`.
+        $statement = $this->connection->prepare('DELETE FROM `token` WHERE `device_id` = UUID_TO_BIN(:device_id) AND `account_id` IN (SELECT `account_id` FROM (SELECT `account_id` FROM `token` WHERE `token` = :token) AS temp)');
         $statement->bindParam(':device_id', $device_id);
         $statement->bindParam(':token', $token);
         $statement->execute();
 
-        // If no results are returned, no device ID was found corresponding to the given token.
         if ($statement->rowCount() < 1) {
-            throw new Exception('Invalid access token or device ID.', 401);
+            // Invalid `token`, or `device_id` does not belong to `account` of given `token`.
+            throw new Exception('Could not delete token.', 400);
         }
 
         // Successfully deleted token.
