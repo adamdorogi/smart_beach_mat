@@ -115,23 +115,42 @@ class Account {
      * Update the `email` of the `account` with the given `token`.
      * 
      * @param string $token The token belonging to the `account` for which the `email` will be updated.
-     * @param string[] $attributes The attributes of the `account` to be updated. Possible values: `new`.
+     * @param string[] $attributes The attributes of the `account` to be updated. Possible values: `new_email`, `password`.
      * @throws Exception if the `token` is invalid, an account with the email address already exists,
-     *                   or the email address could not be updated.
+     *                   the password is invalid, or the email address could not be updated.
      */
     private function update_email($token, $attributes) {
         // Extract attribute.
-        $new_email = $attributes['new'];
+        $new_email = $attributes['new_email'];
+        $password = $attributes['password'];
         
         // Validate new email address.
         if (!filter_var($new_email, FILTER_VALIDATE_EMAIL)) {
             throw new Exception('Email address is invalid.', 400);
         }
 
-        // Update the `email` of the `account` with the given `token`.
-        $statement = $this->connection->prepare('UPDATE `account` SET `email` = :new_email WHERE `id` IN (SELECT `account_id` FROM `token` WHERE `token` = :token)');
-        $statement->bindParam(':new_email', $new_email);
+        // Get the `id` and `password` of the `account` with the given `token`.
+        $statement = $this->connection->prepare('SELECT `id`, `password` FROM `account` WHERE `id` IN (SELECT `account_id` FROM `token` WHERE `token` = :token)');
         $statement->bindParam(':token', $token);
+        $statement->execute();
+
+        if ($statement->rowCount() < 1) {
+            throw new Exception('Invalid access token.', 401);
+        }
+
+        $account = $statement->fetch(PDO::FETCH_ASSOC);
+        $retrieved_password_hash = $account['password'];
+        $account_id = $account['id'];
+
+        // Verify the old password.
+        if (!password_verify($password, $retrieved_password_hash)) {
+            throw new Exception('Incorrect password.', 401);
+        }
+
+        // Update the `email` of the `account` with the given `id`.
+        $statement = $this->connection->prepare('UPDATE `account` SET `email` = :new_email WHERE `id` = :account_id');
+        $statement->bindParam(':new_email', $new_email);
+        $statement->bindParam(':account_id', $account_id);
         $statement->execute();
 
         if ($statement->errorCode() === '23000') {
@@ -151,13 +170,13 @@ class Account {
      * Update the `password` of the `account` with the given `token`.
      * 
      * @param string $token The token belonging to the `account` for which the `password` will be updated.
-     * @param string[] $attributes The attributes of the `account` to be updated. Possible values: `new`, `old`.
+     * @param string[] $attributes The attributes of the `account` to be updated. Possible values: `new_password`, `password`.
      * @throws Exception if the `token` is invalid, or the `old` password is invalid.
      */
     private function update_password($token, $attributes) {
         // Extract attributes.
-        $new_password = $attributes['new'];
-        $old_password = $attributes['old'];
+        $new_password = $attributes['new_password'];
+        $password = $attributes['password'];
 
         // Get the `id` and `password` of the `account` with the given `token`.
         $statement = $this->connection->prepare('SELECT `id`, `password` FROM `account` WHERE `id` IN (SELECT `account_id` FROM `token` WHERE `token` = :token)');
@@ -173,12 +192,12 @@ class Account {
         $account_id = $account['id'];
 
         // Verify the old password.
-        if (!password_verify($old_password, $retrieved_password_hash)) {
+        if (!password_verify($password, $retrieved_password_hash)) {
             throw new Exception('Incorrect password.', 401);
         }
 
         // Validate password length.
-        if (strlen($newpassword) < 8) {
+        if (strlen($new_password) < 8) {
             throw new Exception('Password is too short.', 400);
         }
 
