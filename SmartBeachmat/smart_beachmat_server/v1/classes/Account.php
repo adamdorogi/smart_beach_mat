@@ -1,33 +1,51 @@
 <?php
-require_once __DIR__.'/../interfaces/Entity.php';
-
-class Account implements Entity {
+/**
+ * A class used to represent an `account` entity in the database
+ *
+ * The `Account` class represents an `account` entity in the database,
+ * and provides create, read, update, and delete operations for the entity.
+ *
+ * @author Adam Dorogi-Kaposi
+ */
+class Account {
     private $connection;
 
+    /**
+     * Constructor.
+     * 
+     * @param object $connection The `PDO` connection to the MySQL database.
+     * @throws Exception if an invalid HTTP method is used.
+     */
     public function __construct($connection) {
         $this->connection = $connection;
 
-        $method = $_SERVER['REQUEST_METHOD'];
         $headers = getallheaders();
         $token = str_replace('Bearer ', '', $headers['Authorization']); // Extract Bearer token from Authorization header.
 
-        switch ($method) {
-            case 'POST': // Create an account.
+        switch ($_SERVER['REQUEST_METHOD']) {
+            case 'POST': // Create an `account`.
                 $this->create($_POST);
                 break;
-            case 'GET': // Get an account.
+            case 'GET': // Get `account` information.
                 $this->read($token);
                 break;
-            case 'PUT': // Update an account.
-                parse_str(file_get_contents("php://input"), $_PUT);
-
+            case 'PUT': // Update `account` email or password.
                 $request_uri = explode('/', $_SERVER['REQUEST_URI']);
-                $attribute = $request_uri[3];
+                parse_str(file_get_contents('php://input'), $_PUT);
 
-                $this->update($token, $attribute, $_PUT);
+                switch ($request_uri[3]) {
+                    case 'email':
+                        $this->update_email($token, $_PUT);
+                        break;
+                    case 'password':
+                        $this->update_password($token, $_PUT);
+                        break;
+                    default:
+                        break;
+                }
                 break;
-            case 'DELETE': // Delete an account.
-                $this->delete('a', $token); // TODO
+            case 'DELETE': // Delete `account`.
+                $this->delete($token);
                 break;
             default:
                 throw new Exception('Method not allowed.', 405);
@@ -35,145 +53,167 @@ class Account implements Entity {
         }
     }
 
-    public function create($attributes) {
+    /**
+     * Create a new `account` in the database with the given `email`, hashed `password`, and a randomly generated UUID as `id`.
+     * 
+     * @param string[] $attributes The attributes of the `account`. Possible values: `email`, `password`.
+     * @throws Exception if an account with the email address already exists.
+     */
+    private function create($attributes) {
+        // Extract attributes.
         $email = $attributes['email'];
         $password = $attributes['password'];
 
-        // Validate email.
+        // Validate email address.
         if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
             throw new Exception('Email address is invalid.', 400);
         }
-
-        // Validate password.
+        
+        // Validate password length.
         if (strlen($password) < 8) {
             throw new Exception('Password is too short.', 400);
         }
 
-        $password_hash = password_hash($password, PASSWORD_DEFAULT);
-
-        // Add account to database.
-        $statement = $this->connection->prepare("INSERT INTO `account` (`id`, `email`, `password`) VALUES (UUID_TO_BIN(UUID()), :email, :password_hash)");
+        // Create a new `account` in the database with the given attributes.
+        $statement = $this->connection->prepare('INSERT INTO `account` (`id`, `email`, `password`) VALUES (UUID_TO_BIN(UUID()), :email, :password_hash)');
         $statement->bindParam(':email', $email);
-        $statement->bindParam(':password_hash', $password_hash);
+        $statement->bindParam(':password_hash', password_hash($password, PASSWORD_DEFAULT));
         $statement->execute();
 
-        // Check if account already exists.
-        if ($statement->errorCode() === "23000") {
-            throw new Exception('Email address already exists.', 409);
+        if ($statement->errorCode() === '23000') {
+            throw new Exception('Account with email address already exists.', 409);
         }
 
         // Successfully created new account.
         http_response_code(201);
     }
 
-    // Get the information of the account belonging to the token.
-    // Note: For security reasons, password is not returned.
-    public function read($token) {
-        // Select account belonging to token.
-        $statement = $this->connection->prepare("SELECT BIN_TO_UUID(`id`) AS `id`, `email`, `is_verified`, `created_on` FROM `account` WHERE `id` IN (SELECT `account_id` FROM `token` WHERE `token` = :token)");
+    /**
+     * Get the `id`, `email`, `is_verified`, and `created_on` attributes of the `account` with the given `token`.
+     * For security reasons, the password belonging to the `account` is not returned in the response.
+     * 
+     * @param string $token The token belonging to the `account` for which the attributes will be returned.
+     * @throws Exception if the `token` is invalid.
+     */
+    private function read($token) {
+        // Select `account` with the given `token`.
+        $statement = $this->connection->prepare('SELECT BIN_TO_UUID(`id`) AS `id`, `email`, `is_verified`, `created_on` FROM `account` WHERE `id` IN (SELECT `account_id` FROM `token` WHERE `token` = :token)');
         $statement->bindParam(':token', $token);
         $statement->execute();
 
-        // If no results are returned, no account ID was found with the given token (i.e. token doesn't exist).
         if ($statement->rowCount() < 1) {
             throw new Exception('Invalid access token.', 401);
         }
 
-        // Return account information.
+        // Return `account` information.
         $result = $statement->fetch(PDO::FETCH_ASSOC);
-        $result['is_verified'] = boolval($result['is_verified']); // Convert string ("0" or "1") to boolean (false or true).
+        $result['is_verified'] = boolval($result['is_verified']); // Convert string ('1' or '0') to boolean (`true` or `false`).
         echo json_encode($result);
     }
 
-    public function update($token, $attribute, $attributes) {
-        switch ($attribute) {
-            case 'email':
-                $new_email = $attributes['new'];
-
-                // Validate email.
-                if (!filter_var($new_email, FILTER_VALIDATE_EMAIL)) {
-                    throw new Exception('Email address is invalid.', 400);
-                }
-
-                // Update email.
-                $statement = $this->connection->prepare("UPDATE `account` SET `email` = :new_email WHERE `id` IN (SELECT `account_id` FROM `token` WHERE `token` = :token)");
-                $statement->bindParam(':new_email', $new_email);
-                $statement->bindParam(':token', $token);
-                $statement->execute();
-
-                // Check if account already exists.
-                if ($statement->errorCode() === "23000") {
-                    throw new Exception('Email address already exists.', 409);
-                }
-
-                if ($statement->rowCount() < 1) {
-                    throw new Exception('Invalid access token, or email has not been updated.', 400);
-                }
-
-                // Successfully updated account email.
-                http_response_code(204);
-                break;
-            case 'password':
-                $new_password = $attributes['new'];
-                $old_password = $attributes['old'];
-
-                // Retrieve old password.
-                $statement = $this->connection->prepare("SELECT `id`, `password` FROM `account` WHERE `id` IN (SELECT `account_id` FROM `token` WHERE `token` = :token)");
-                $statement->bindParam(':token', $token);
-                $statement->execute();
-
-                // No result (i.e. invalid access token).
-                if ($statement->rowCount() < 1) {
-                    throw new Exception('Invalid access token.', 401);
-                }
-
-                // Verify the old password.
-                $account = $statement->fetch(PDO::FETCH_ASSOC);
-
-                if (!password_verify($old_password, $account['password'])) {
-                    throw new Exception('Incorrect password.', 401);
-                }
-
-                // Validate new password.
-                if (strlen($new_password) < 8) {
-                    throw new Exception('Password is too short.', 400);
-                }
-
-                $password_hash = password_hash($new_password, PASSWORD_DEFAULT);
-
-                // Change password.
-                $statement = $this->connection->prepare("UPDATE `account` SET `password` = :password_hash WHERE `id` = :id");
-                $statement->bindParam(':password_hash', $password_hash);
-                $statement->bindParam(':id', $account['id']);
-                $statement->execute();
-
-                // Log out of all other sessions.
-                $statement = $this->connection->prepare("DELETE FROM `token` WHERE `account_id` = :id AND `token` <> :token");
-                $statement->bindParam(':token', $token);
-                $statement->bindParam(':id', $account['id']);
-                $statement->execute();
-
-                // Successfully updated account password.
-                http_response_code(204);
-                break;
-            default:
-                return_error(404, 'Invalid endpoint.');
-                break;
+    /**
+     * Update the `email` of the `account` with the given `token`.
+     * 
+     * @param string $token The token belonging to the `account` for which the `email` will be updated.
+     * @param string[] $attributes The attributes of the `account` to be updated. Possible values: `new`.
+     * @throws Exception if the `token` is invalid, an account with the email address already exists,
+     *                   or the email address could not be updated.
+     */
+    private function update_email($token, $attributes) {
+        // Extract attribute.
+        $new_email = $attributes['new'];
+        
+        // Validate new email address.
+        if (!filter_var($new_email, FILTER_VALIDATE_EMAIL)) {
+            throw new Exception('Email address is invalid.', 400);
         }
-    }
 
-    public function delete($id, $token) {
-        // Get all device IDs belonging to user with given token.
-        $statement = $this->connection->prepare("DELETE FROM `account` WHERE `id` IN (SELECT `account_id` FROM `token` WHERE `token` = :token)");
+        // Update the `email` of the `account` with the given `token`.
+        $statement = $this->connection->prepare('UPDATE `account` SET `email` = :new_email WHERE `id` IN (SELECT `account_id` FROM `token` WHERE `token` = :token)');
+        $statement->bindParam(':new_email', $new_email);
         $statement->bindParam(':token', $token);
         $statement->execute();
 
-        // If no results are returned, no token was found.
+        if ($statement->errorCode() === '23000') {
+            throw new Exception('Account with email address already exists.', 409);
+        }
+
+        if ($statement->rowCount() < 1) {
+            // Access token is invalid, account with email already exists, or the new and old email addresses are the same.
+            throw new Exception('Email address could not be updated.', 400);
+        }
+
+        // Successfully updated `account` `email`.
+        http_response_code(204);
+    }
+
+    /**
+     * Update the `password` of the `account` with the given `token`.
+     * 
+     * @param string $token The token belonging to the `account` for which the `password` will be updated.
+     * @param string[] $attributes The attributes of the `account` to be updated. Possible values: `new`, `old`.
+     * @throws Exception if the `token` is invalid, or the `old` password is invalid.
+     */
+    private function update_password($token, $attributes) {
+        // Extract attributes.
+        $new_password = $attributes['new'];
+        $old_password = $attributes['old'];
+
+        // Get the `id` and `password` of the `account` with the given `token`.
+        $statement = $this->connection->prepare('SELECT `id`, `password` FROM `account` WHERE `id` IN (SELECT `account_id` FROM `token` WHERE `token` = :token)');
+        $statement->bindParam(':token', $token);
+        $statement->execute();
+
         if ($statement->rowCount() < 1) {
             throw new Exception('Invalid access token.', 401);
         }
 
-        // Successfully deleted token.
+        $account = $statement->fetch(PDO::FETCH_ASSOC);
+        $retrieved_password_hash = $account['password'];
+        $account_id = $account['id'];
+
+        // Verify the old password.
+        if (!password_verify($old_password, $retrieved_password_hash)) {
+            throw new Exception('Incorrect password.', 401);
+        }
+
+        // Validate password length.
+        if (strlen($newpassword) < 8) {
+            throw new Exception('Password is too short.', 400);
+        }
+
+        // Update the `account` password.
+        $statement = $this->connection->prepare('UPDATE `account` SET `password` = :password_hash WHERE `id` = :id');
+        $statement->bindParam(':password_hash', password_hash($new_password, PASSWORD_DEFAULT));
+        $statement->bindParam(':id', $account_id);
+        $statement->execute();
+
+        // Log out of all other sessions.
+        $statement = $this->connection->prepare('DELETE FROM `token` WHERE `account_id` = :id AND `token` <> :token');
+        $statement->bindParam(':token', $token);
+        $statement->bindParam(':id', $account_id);
+        $statement->execute();
+
+        // Successfully updated `account` `password`.
+        http_response_code(204);
+    }
+
+    /**
+     * Delete the `account` with the given `token`.
+     * 
+     * @param string $token The token belonging to the `account` which will be deleted.
+     * @throws Exception if the `token` is invalid.
+     */
+    private function delete($token) {
+        $statement = $this->connection->prepare('DELETE FROM `account` WHERE `id` IN (SELECT `account_id` FROM `token` WHERE `token` = :token)');
+        $statement->bindParam(':token', $token);
+        $statement->execute();
+
+        if ($statement->rowCount() < 1) {
+            throw new Exception('Invalid access token.', 401);
+        }
+
+        // Successfully deleted `account`.
         http_response_code(204);
     }
 }
