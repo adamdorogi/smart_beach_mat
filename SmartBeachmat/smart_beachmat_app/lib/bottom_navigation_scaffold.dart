@@ -36,6 +36,8 @@ class _BottomNavigationScaffoldState extends State<BottomNavigationScaffold> {
       ),
       body: _pages[_currentIndex],
       bottomNavigationBar: BottomNavigationBar(
+        showSelectedLabels: false,
+        showUnselectedLabels: false,
         currentIndex: _currentIndex,
         items: _bottomNavigationBarItems,
         onTap: _onTap,
