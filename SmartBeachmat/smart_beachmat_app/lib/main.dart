@@ -18,17 +18,12 @@ class MyApp extends StatelessWidget {
       home: FutureBuilder(
         future: _read(key: 'token'),
         builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
-          switch (snapshot.connectionState) {
-            case ConnectionState.waiting:
-              return Scaffold();
-            case ConnectionState.done:
-              if (snapshot.hasData) {
-                return BottomNavigationScaffold();
-              }
-              return SignUpScaffold();
-            default:
-              return SignUpScaffold();
+          if (snapshot.hasData) {
+            return BottomNavigationScaffold();
+          } else if (snapshot.connectionState == ConnectionState.waiting) {
+            return Scaffold();
           }
+          return SignUpScaffold();
         },
       ),
     );
