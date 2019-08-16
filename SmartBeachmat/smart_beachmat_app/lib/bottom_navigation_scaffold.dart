@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:smart_beachmat_app/bottom_navigation_widget.dart';
-import 'package:smart_beachmat_app/profile_widget.dart';
 import 'package:smart_beachmat_app/dashboard_widget.dart';
+import 'package:smart_beachmat_app/profile_widget.dart';
 
 class BottomNavigationScaffold extends StatefulWidget {
   @override
