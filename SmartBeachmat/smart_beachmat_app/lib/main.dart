@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import 'package:smart_beachmat_app/bottom_navigation_scaffold.dart';
-import 'package:smart_beachmat_app/sign_up_scaffold.dart';
+import 'package:smart_beachmat_app/sign_up/sign_up_scaffold.dart';
 
 void main() => runApp(MyApp());
 

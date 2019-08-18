@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:smart_beachmat_app/api_exception.dart';
 
+import 'package:smart_beachmat_app/api_exception.dart';
 import 'package:smart_beachmat_app/api_service.dart';
+import 'package:smart_beachmat_app/sign_up/name/sign_up_name_scaffold.dart';
 
 class SignUpFormBody extends StatefulWidget {
   final GlobalKey<FormState> formKey;
@@ -75,10 +76,9 @@ class _SignUpFormBodyState extends State<SignUpFormBody> {
 
       try {
         await ApiService().createAccount(email: email, password: password);
-        Scaffold.of(context).showSnackBar(SnackBar(
-          content: Text('Successfully created account!'),
-          backgroundColor: Colors.green,
-        ));
+
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (context) => SignUpNameScaffold()));
       } on ApiException catch (err) {
         Scaffold.of(context).showSnackBar(SnackBar(
           content: Text(err.message),
