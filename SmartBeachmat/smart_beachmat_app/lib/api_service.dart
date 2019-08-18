@@ -36,6 +36,23 @@ class ApiService {
     }
   }
 
+  Future<Response> createToken({String email, String password}) async {
+    return _post(
+      '$_scheme://$_host/v$_version/tokens',
+      {
+        HttpHeaders.acceptHeader: 'application/json',
+        HttpHeaders.contentTypeHeader: 'application/x-www-form-urlencoded',
+      },
+      {
+        'email': email,
+        'password': password,
+        'ip_address': '12.34.56.78',
+        'device_id': '9ffbd91f-b710-42c6-9bef-6fd5d64b1592',
+        'device_name': 'Test iPhone'
+      },
+    );
+  }
+
   Future<void> createAccount({String email, String password}) async {
     await _post(
       '$_scheme://$_host/v$_version/accounts',
