@@ -24,20 +24,23 @@ class ApiService {
   }
 
   Future<void> createAccount({String email, String password}) async {
-    final Response response = await post(
-      '$_scheme://$_host/v$_version/accounts',
-      headers: {
-        HttpHeaders.acceptHeader: 'application/json',
-        HttpHeaders.contentTypeHeader: 'application/x-www-form-urlencoded',
-      },
-      body: {
-        'email': email,
-        'password': password,
-      },
-    );
-
-    if (!_isSuccess(response.statusCode)) {
-      throw ApiException.fromJson(json.decode(response.body));
+    try {
+      final Response response = await post(
+        '$_scheme://$_host/v$_version/accounts',
+        headers: {
+          HttpHeaders.acceptHeader: 'application/json',
+          HttpHeaders.contentTypeHeader: 'application/x-www-form-urlencoded',
+        },
+        body: {
+          'email': email,
+          'password': password,
+        },
+      );
+      if (!_isSuccess(response.statusCode)) {
+        throw ApiException.fromJson(json.decode(response.body));
+      }
+    } on SocketException catch (_) {
+      throw ApiException('Could not connect to internet.');
     }
   }
 }

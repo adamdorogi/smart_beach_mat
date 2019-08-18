@@ -1,9 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:smart_beachmat_app/api_exception.dart';
+
+import 'package:smart_beachmat_app/api_service.dart';
 
 class SignUpFormBody extends StatefulWidget {
   final GlobalKey<FormState> formKey;
 
-  SignUpFormBody(this.formKey);
+  const SignUpFormBody(this.formKey);
 
   @override
   State<StatefulWidget> createState() {
@@ -12,7 +15,7 @@ class SignUpFormBody extends StatefulWidget {
 }
 
 class _SignUpFormBodyState extends State<SignUpFormBody> {
-  final _passwordKey = GlobalKey<FormFieldState>();
+  final GlobalKey<FormFieldState> _passwordKey = GlobalKey<FormFieldState>();
 
   String email;
   String password;
@@ -44,7 +47,7 @@ class _SignUpFormBodyState extends State<SignUpFormBody> {
   }
 
   String _validateEmail(String email) {
-    Pattern pattern =
+    final Pattern pattern =
         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
     if (!RegExp(pattern).hasMatch(email)) {
       return 'Please enter a valid email address.';
@@ -66,11 +69,22 @@ class _SignUpFormBodyState extends State<SignUpFormBody> {
     return null;
   }
 
-  void _submit() {
+  Future<void> _submit() async {
     if (widget.formKey.currentState.validate()) {
       widget.formKey.currentState.save();
-      // send account creation request
-      print('EMAIL: $email, PASSWORD: $password');
+
+      try {
+        await ApiService().createAccount(email: email, password: password);
+        Scaffold.of(context).showSnackBar(SnackBar(
+          content: Text('Successfully created account!'),
+          backgroundColor: Colors.green,
+        ));
+      } on ApiException catch (err) {
+        Scaffold.of(context).showSnackBar(SnackBar(
+          content: Text(err.message),
+          backgroundColor: Colors.red,
+        ));
+      }
     }
   }
 }
