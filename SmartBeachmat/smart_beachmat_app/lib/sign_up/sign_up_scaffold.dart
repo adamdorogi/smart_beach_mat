@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:smart_beachmat_app/sign_up_form_body.dart';
+import 'package:smart_beachmat_app/sign_up/sign_up_form_body.dart';
 
 class SignUpScaffold extends StatelessWidget {
   // Create a global key that uniquely identifies the Form widget and allows
