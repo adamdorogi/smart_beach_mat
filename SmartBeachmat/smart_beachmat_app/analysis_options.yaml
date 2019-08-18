@@ -3,3 +3,4 @@ include: package:pedantic/analysis_options.yaml
 linter:
   rules:
     - prefer_single_quotes
+    - unnecessary_await_in_return

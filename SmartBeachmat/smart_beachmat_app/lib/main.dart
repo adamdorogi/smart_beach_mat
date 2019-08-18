@@ -9,8 +9,7 @@ void main() => runApp(MyApp());
 class MyApp extends StatelessWidget {
   final _storage = FlutterSecureStorage();
 
-  Future<String> _read({@required String key}) async =>
-      await _storage.read(key: key);
+  Future<String> _read({@required String key}) async => _storage.read(key: key);
 
   @override
   Widget build(BuildContext context) {
