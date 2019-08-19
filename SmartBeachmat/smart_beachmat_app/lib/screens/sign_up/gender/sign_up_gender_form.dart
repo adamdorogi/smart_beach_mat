@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:smart_beachmat_app/sign_up/dob/sign_up_dob_form.dart';
+import 'package:smart_beachmat_app/screens/sign_up/dob/sign_up_dob_form.dart';
 import 'package:smart_beachmat_app/user.dart';
 
 class SignUpGenderForm extends StatefulWidget {

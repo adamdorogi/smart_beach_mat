@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:smart_beachmat_app/sign_up/skin_type/sign_up_skin_type_scaffold.dart';
+import 'package:smart_beachmat_app/screens/sign_up/skin_type/sign_up_skin_type_scaffold.dart';
 import 'package:smart_beachmat_app/user.dart';
 
 class SignUpNameForm extends StatefulWidget {

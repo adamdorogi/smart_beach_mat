@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:smart_beachmat_app/sign_up/name/sign_up_name_form.dart';
+import 'package:smart_beachmat_app/screens/sign_up/name/sign_up_name_form.dart';
 
 class SignUpNameScaffold extends StatelessWidget {
   static GlobalKey<FormState> _formKey = GlobalKey<FormState>();

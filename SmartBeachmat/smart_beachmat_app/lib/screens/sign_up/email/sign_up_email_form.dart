@@ -4,7 +4,7 @@ import 'package:http/http.dart';
 
 import 'package:smart_beachmat_app/api_exception.dart';
 import 'package:smart_beachmat_app/api_service.dart';
-import 'package:smart_beachmat_app/sign_up/name/sign_up_name_scaffold.dart';
+import 'package:smart_beachmat_app/screens/sign_up/name/sign_up_name_scaffold.dart';
 
 class SignUpEmailForm extends StatefulWidget {
   final GlobalKey<FormState> formKey;

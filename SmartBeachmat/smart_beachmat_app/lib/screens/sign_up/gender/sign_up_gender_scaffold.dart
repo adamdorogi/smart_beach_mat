@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:smart_beachmat_app/sign_up/gender/sign_up_gender_form.dart';
+import 'package:smart_beachmat_app/screens/sign_up/gender/sign_up_gender_form.dart';
 import 'package:smart_beachmat_app/user.dart';
 
 class SignUpGenderScaffold extends StatelessWidget {
