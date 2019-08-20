@@ -2,7 +2,7 @@ class User {
   String name;
   int skinType;
   String gender;
-  DateTime dob;
+  String dob;
 
   User({this.name, this.skinType, this.gender, this.dob});
 
