@@ -72,8 +72,6 @@ class User {
         $statement->bindParam(':token', $token);
         $statement->execute();
 
-        var_dump($statement->errorInfo());
-
         if ($statement->rowCount() < 1) {
             // Invalid access token, or invalid `skin_type`, `dob`, or `gender` format.
             throw new Exception('User could not be created.', 400);
