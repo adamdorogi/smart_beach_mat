@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'package:intl/intl.dart';
+
 import 'package:smart_beachmat_app/user.dart';
 
 class SignUpDobForm extends StatefulWidget {
@@ -48,8 +50,7 @@ class _SignUpDobFormState extends State<SignUpDobForm> {
     });
   }
 
-  void _continue() {
-    widget.user.dob = _selectedDate;
-    print(widget.user.toString());
+  Future<void> _continue() async {
+    widget.user.dob = DateFormat('yyyy-MM-dd').format(_selectedDate);
   }
 }
