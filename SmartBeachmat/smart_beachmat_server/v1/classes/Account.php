@@ -20,7 +20,7 @@ class Account {
         $this->connection = $connection;
 
         $headers = getallheaders();
-        $token = str_replace('Bearer ', '', $headers['Authorization']); // Extract Bearer token from Authorization header.
+        $token = str_replace('Bearer ', '', $headers['authorization']); // Extract Bearer token from Authorization header.
 
         switch ($_SERVER['REQUEST_METHOD']) {
             case 'POST': // Create an `account`.

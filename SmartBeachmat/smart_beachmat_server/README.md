@@ -41,7 +41,7 @@ In the `/etc/apache2/httpd.conf` file, uncomment `LoadModule rewrite_module libe
 - Get specific header value:
   ```
   $headers = getallheaders();
-  $headers['Authorization'];
+  $headers['authorization'];
   ```
 - Get POST body:
   ```

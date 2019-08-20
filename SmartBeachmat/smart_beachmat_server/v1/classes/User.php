@@ -20,7 +20,7 @@ class User {
         $this->connection = $connection;
 
         $headers = getallheaders();
-        $token = str_replace('Bearer ', '', $headers['Authorization']); // Extract Bearer token from Authorization header.
+        $token = str_replace('Bearer ', '', $headers['authorization']); // Extract Bearer token from Authorization header.
 
         switch ($_SERVER['REQUEST_METHOD']) {
             case 'POST': // Create a `user`.
@@ -57,6 +57,8 @@ class User {
      * @throws Exception if the `token` is invalid, or `skin_type`, `dob`, or `gender` are in an incorrect format.
      */
     private function create($token, $attributes) {
+        echo 'Attributes:';
+        var_dump($attributes);
         // Extract attributes.
         $name = $attributes['name'];
         $skin_type = $attributes['skin_type'];
