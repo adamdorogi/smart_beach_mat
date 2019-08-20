@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:intl/intl.dart';
+import 'package:smart_beachmat_app/api_service.dart';
 
 import 'package:smart_beachmat_app/user.dart';
 
@@ -52,5 +53,7 @@ class _SignUpDobFormState extends State<SignUpDobForm> {
 
   Future<void> _continue() async {
     widget.user.dob = DateFormat('yyyy-MM-dd').format(_selectedDate);
+
+    await ApiService().createUser(widget.user);
   }
 }
