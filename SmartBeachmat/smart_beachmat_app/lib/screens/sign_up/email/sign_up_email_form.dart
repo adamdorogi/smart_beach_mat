@@ -1,4 +1,7 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import 'package:http/http.dart';
 
@@ -81,9 +84,12 @@ class _SignUpEmailFormState extends State<SignUpEmailForm> {
       try {
         await ApiService().createAccount(email: _email, password: _password);
 
-        Response test =
+        Response response =
             await ApiService().createToken(email: _email, password: _password);
-        // FlutterSecureStorage storage = FlutterSecureStorage();
+
+        String token = json.decode(response.body)['token'];
+        FlutterSecureStorage storage = FlutterSecureStorage();
+        await storage.write(key: 'token', value: token);
 
         Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (context) => SignUpNameScaffold()));
