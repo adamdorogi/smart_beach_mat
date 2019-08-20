@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:smart_beachmat_app/screens/sign_up/gender/sign_up_gender_form.dart';
+import 'package:smart_beachmat_app/screens/sign_up/gender/sign_up_gender_scaffold.dart';
 import 'package:smart_beachmat_app/user.dart';
 
 class SignUpSkinTypeForm extends StatefulWidget {
@@ -50,6 +50,6 @@ class _SignUpSkinTypeFormState extends State<SignUpSkinTypeForm> {
     print(widget.user.toString());
 
     Navigator.push(context,
-        MaterialPageRoute(builder: (context) => SignUpGenderForm(widget.user)));
+        MaterialPageRoute(builder: (context) => SignUpGenderScaffold(widget.user)));
   }
 }

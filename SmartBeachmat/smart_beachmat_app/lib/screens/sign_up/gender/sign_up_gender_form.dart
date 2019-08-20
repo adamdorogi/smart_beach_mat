@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:smart_beachmat_app/screens/sign_up/dob/sign_up_dob_form.dart';
+import 'package:smart_beachmat_app/screens/sign_up/dob/sign_up_dob_scaffold.dart';
 import 'package:smart_beachmat_app/user.dart';
 
 class SignUpGenderForm extends StatefulWidget {
@@ -49,7 +49,9 @@ class _SignUpGenderFormState extends State<SignUpGenderForm> {
 
     print(widget.user.toString());
 
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => SignUpDobForm(widget.user)));
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => SignUpDobScaffold(widget.user)));
   }
 }
