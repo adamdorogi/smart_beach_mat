@@ -10,6 +10,9 @@ class SignUpButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       child: RaisedButton(
+        color: Theme.of(context).primaryColor,
+        highlightColor: Theme.of(context).primaryColor,
+        disabledColor: Theme.of(context).primaryColor.withOpacity(0.5),
         child: child,
         onPressed: onPressed,
         elevation: 16.0,
