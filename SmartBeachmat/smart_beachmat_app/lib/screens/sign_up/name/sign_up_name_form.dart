@@ -17,42 +17,51 @@ class SignUpNameForm extends StatefulWidget {
 
 class _SignUpNameFormState extends State<SignUpNameForm> {
   String _name;
-  User _user = User();
+
+  TextEditingController _nameController = new TextEditingController();
+
+  bool _isButtonEnabled = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _nameController.addListener(_validateName);
+  }
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
         TextFormField(
-            keyboardType: TextInputType.text,
-            decoration: InputDecoration(labelText: 'Your name'),
-            validator: _validateName,
-            onSaved: (String value) => _name = value),
+          controller: _nameController,
+          keyboardType: TextInputType.text,
+          decoration: InputDecoration(labelText: 'Your name'),
+          onSaved: (String value) => _name = value,
+        ),
         SignUpButton(
           child: Text('Continue'),
-          onPressed: _continue,
+          onPressed: _isButtonEnabled ? _continue : null,
         )
       ],
     );
   }
 
-  String _validateName(String name) {
-    if (name.isEmpty) {
-      return 'Please enter a name.';
+  void _validateName() {
+    if (_isButtonEnabled != _nameController.text.isNotEmpty) {
+      setState(() {
+        _isButtonEnabled = _nameController.text.isNotEmpty;
+      });
     }
-    return null;
   }
 
   void _continue() {
-    if (widget.formKey.currentState.validate()) {
-      widget.formKey.currentState.save();
+    widget.formKey.currentState.save();
 
-      _user.name = _name;
+    User user = User(name: _name);
 
-      print(_user.toString());
+    print(user.toString());
 
-      Navigator.push(context,
-          MaterialPageRoute(builder: (context) => SignUpSkinTypeScaffold(_user)));
-    }
+    Navigator.push(context,
+        MaterialPageRoute(builder: (context) => SignUpSkinTypeScaffold(user)));
   }
 }
