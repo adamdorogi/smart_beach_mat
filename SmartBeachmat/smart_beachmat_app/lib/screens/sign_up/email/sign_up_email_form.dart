@@ -7,6 +7,7 @@ import 'package:http/http.dart';
 import 'package:smart_beachmat_app/api_exception.dart';
 import 'package:smart_beachmat_app/api_service.dart';
 import 'package:smart_beachmat_app/screens/sign_up/name/sign_up_name_scaffold.dart';
+import 'package:smart_beachmat_app/widgets/sign_up_button.dart';
 
 class SignUpEmailForm extends StatefulWidget {
   final GlobalKey<FormState> formKey;
@@ -45,7 +46,7 @@ class _SignUpEmailFormState extends State<SignUpEmailForm> {
           decoration: InputDecoration(labelText: 'Confirm password'),
           validator: _validateConfirmPassword,
         ),
-        RaisedButton(
+        SignUpButton(
           child: Text('Sign Up'),
           onPressed: _submit,
         )

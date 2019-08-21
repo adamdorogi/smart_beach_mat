@@ -4,6 +4,7 @@ import 'package:intl/intl.dart';
 
 import 'package:smart_beachmat_app/api_service.dart';
 import 'package:smart_beachmat_app/user.dart';
+import 'package:smart_beachmat_app/widgets/sign_up_button.dart';
 
 class SignUpDobForm extends StatefulWidget {
   final User user;
@@ -28,7 +29,7 @@ class _SignUpDobFormState extends State<SignUpDobForm> {
           child: Text('Select birthday'),
           onPressed: _showDatePicker,
         ),
-        RaisedButton(
+        SignUpButton(
           child: Text('Continue'),
           onPressed: _selectedDate == null ? null : _continue,
         )
