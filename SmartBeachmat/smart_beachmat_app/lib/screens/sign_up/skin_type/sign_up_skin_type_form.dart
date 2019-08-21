@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:smart_beachmat_app/screens/sign_up/gender/sign_up_gender_scaffold.dart';
 import 'package:smart_beachmat_app/models/user.dart';
+import 'package:smart_beachmat_app/widgets/chip_wrap.dart';
 import 'package:smart_beachmat_app/widgets/sign_up_button.dart';
 
 class SignUpSkinTypeForm extends StatefulWidget {
@@ -16,19 +17,23 @@ class SignUpSkinTypeForm extends StatefulWidget {
 }
 
 class _SignUpSkinTypeFormState extends State<SignUpSkinTypeForm> {
-  List<String> _skinTypes = <String>['I', 'II', 'III', 'IV', 'V', 'VI'];
+  List<String> _skinTypes = <String>['🧑🏻', '🧑🏼', '🧑🏽', '🧑🏾', '🧑🏿'];
   int _currentIndex;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Wrap(
+        ChipWrap(
           children: List<ChoiceChip>.generate(
             _skinTypes.length,
             (int index) {
               return ChoiceChip(
-                label: Text(_skinTypes[index]),
+                backgroundColor: Colors.transparent,
+                label: Text(
+                  _skinTypes[index],
+                  style: TextStyle(fontSize: 51),
+                ),
                 selected: _currentIndex == index,
                 onSelected: (_) {
                   setState(() => _currentIndex = index);
@@ -46,11 +51,11 @@ class _SignUpSkinTypeFormState extends State<SignUpSkinTypeForm> {
   }
 
   void _continue() {
-    widget.user.skinType = _currentIndex + 1;
+    widget.user.skinType = _currentIndex + 2;
 
-    print(widget.user.toString());
-
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => SignUpGenderScaffold(widget.user)));
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+            builder: (context) => SignUpGenderScaffold(widget.user)));
   }
 }

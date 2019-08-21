@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:smart_beachmat_app/screens/sign_up/dob/sign_up_dob_scaffold.dart';
 import 'package:smart_beachmat_app/models/user.dart';
+import 'package:smart_beachmat_app/widgets/chip_wrap.dart';
 import 'package:smart_beachmat_app/widgets/sign_up_button.dart';
 
 class SignUpGenderForm extends StatefulWidget {
@@ -16,19 +17,24 @@ class SignUpGenderForm extends StatefulWidget {
 }
 
 class _SignUpGenderFormState extends State<SignUpGenderForm> {
-  List<String> _genders = <String>['m', 'f'];
+  List<String> _genders = <String>['👨', '👩'];
   int _currentIndex;
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Wrap(
+        ChipWrap(
           children: List<ChoiceChip>.generate(
             _genders.length,
             (int index) {
               return ChoiceChip(
-                label: Text(_genders[index]),
+                backgroundColor: Colors.transparent,
+                label: Text(
+                  _genders[index] +
+                      ['🏻', '🏼', '🏽', '🏾', '🏿'][widget.user.skinType - 2],
+                  style: TextStyle(fontSize: 51),
+                ),
                 selected: _currentIndex == index,
                 onSelected: (bool selected) {
                   setState(() => _currentIndex = index);
@@ -46,9 +52,7 @@ class _SignUpGenderFormState extends State<SignUpGenderForm> {
   }
 
   void _continue() {
-    widget.user.gender = _genders[_currentIndex];
-
-    print(widget.user.toString());
+    widget.user.gender = ['m', 'f'][_currentIndex];
 
     Navigator.push(
         context,

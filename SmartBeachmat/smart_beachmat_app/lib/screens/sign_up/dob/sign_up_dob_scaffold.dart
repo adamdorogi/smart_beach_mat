@@ -14,9 +14,27 @@ class SignUpDobScaffold extends StatelessWidget {
     return Scaffold(
       appBar: LeftAppBar(
         context,
-        title: Text('When were you born?'),
+        title: Text('Age? 🎂'),
       ),
-      body: SignUpDobForm(_user),
+      body: Column(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.all(17),
+            child: Text(
+              'When were you born?',
+              style: Theme.of(context).primaryTextTheme.subhead,
+            ),
+          ),
+          SignUpDobForm(_user),
+          Padding(
+            padding: EdgeInsets.all(17),
+            child: Text(
+              'Why? We\'ll need this to calculate your UV thershold!',
+              style: Theme.of(context).primaryTextTheme.caption,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

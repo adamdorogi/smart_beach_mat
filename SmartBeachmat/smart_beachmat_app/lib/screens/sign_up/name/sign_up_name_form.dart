@@ -35,8 +35,8 @@ class _SignUpNameFormState extends State<SignUpNameForm> {
         TextFormField(
           controller: _nameController,
           keyboardType: TextInputType.text,
-          decoration: InputDecoration(labelText: 'Your name'),
-          onSaved: (String value) => _name = value,
+          decoration: InputDecoration(labelText: 'Name'),
+          onSaved: (String value) => _name = value.trim(),
         ),
         SignUpButton(
           child: Text('Continue'),
@@ -47,9 +47,10 @@ class _SignUpNameFormState extends State<SignUpNameForm> {
   }
 
   void _validateName() {
-    if (_isButtonEnabled != _nameController.text.isNotEmpty) {
+    String name = _nameController.text.trim();
+    if (_isButtonEnabled != name.isNotEmpty) {
       setState(() {
-        _isButtonEnabled = _nameController.text.isNotEmpty;
+        _isButtonEnabled = name.isNotEmpty;
       });
     }
   }
@@ -57,9 +58,7 @@ class _SignUpNameFormState extends State<SignUpNameForm> {
   void _continue() {
     widget.formKey.currentState.save();
 
-    User user = User(name: _name);
-
-    print(user.toString());
+    User user = User(name: _name[0].toUpperCase() + _name.substring(1).toLowerCase());
 
     Navigator.push(context,
         MaterialPageRoute(builder: (context) => SignUpSkinTypeScaffold(user)));

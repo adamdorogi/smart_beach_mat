@@ -14,9 +14,27 @@ class SignUpGenderScaffold extends StatelessWidget {
     return Scaffold(
       appBar: LeftAppBar(
         context,
-        title: Text('What\'s your gender?'),
+        title: Text('Sir? Ma\'am?'),
       ),
-      body: SignUpGenderForm(_user),
+      body: Column(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.all(17),
+            child: Text(
+              'What\'s your gender?',
+              style: Theme.of(context).primaryTextTheme.subhead,
+            ),
+          ),
+          SignUpGenderForm(_user),
+          Padding(
+            padding: EdgeInsets.all(17),
+            child: Text(
+              'Why? We\'ll need this to calculate your UV thershold!',
+              style: Theme.of(context).primaryTextTheme.caption,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

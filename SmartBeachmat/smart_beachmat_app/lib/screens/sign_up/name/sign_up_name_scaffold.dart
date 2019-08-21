@@ -11,7 +11,7 @@ class SignUpNameScaffold extends StatelessWidget {
     return Scaffold(
       appBar: LeftAppBar(
         context,
-        title: Text('What should we call you?'),
+        title: Text('What\'s your name?'),
       ),
       body: Form(
         key: _formKey,

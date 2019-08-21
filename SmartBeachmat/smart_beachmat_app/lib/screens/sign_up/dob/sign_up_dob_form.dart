@@ -18,20 +18,27 @@ class SignUpDobForm extends StatefulWidget {
 }
 
 class _SignUpDobFormState extends State<SignUpDobForm> {
-  DateTime _selectedDate;
+  DateTime _selectedDate = DateTime.now();
 
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
-        Text(_selectedDate.toString()),
-        RaisedButton(
-          child: Text('Select birthday'),
-          onPressed: _showDatePicker,
+        GestureDetector(
+          child: Padding(
+            padding: EdgeInsets.all(17),
+            child: Text(
+              DateFormat('️️✏️ MMMM d, yyyy').format(_selectedDate),
+              style: Theme.of(context).primaryTextTheme.headline,
+            ),
+          ),
+          onTap: _showDatePicker,
         ),
         SignUpButton(
           child: Text('Continue'),
-          onPressed: _selectedDate == null ? null : _continue,
+          onPressed: _selectedDate.difference(DateTime.now()).inDays == 0
+              ? null
+              : _continue,
         )
       ],
     );
@@ -44,11 +51,11 @@ class _SignUpDobFormState extends State<SignUpDobForm> {
       context: context,
       firstDate: DateTime(1900),
       lastDate: now,
-      initialDate: now,
+      initialDate: _selectedDate,
     );
 
     setState(() {
-      _selectedDate = date;
+      _selectedDate = (date == null) ? _selectedDate : date;
     });
   }
 

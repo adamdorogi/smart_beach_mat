@@ -14,9 +14,27 @@ class SignUpSkinTypeScaffold extends StatelessWidget {
     return Scaffold(
       appBar: LeftAppBar(
         context,
-        title: Text('What\'s your skin type?'),
+        title: Text('Hello, ${_user.name}! 👋'),
       ),
-      body: SignUpSkinTypeForm(_user),
+      body: Column(
+        children: <Widget>[
+          Padding(
+            padding: EdgeInsets.all(17),
+            child: Text(
+              'What\'s your skin type?',
+              style: Theme.of(context).primaryTextTheme.subhead,
+            ),
+          ),
+          SignUpSkinTypeForm(_user),
+          Padding(
+            padding: EdgeInsets.all(17),
+            child: Text(
+              'Why? We\'ll need this to calculate your UV thershold!',
+              style: Theme.of(context).primaryTextTheme.caption,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }
