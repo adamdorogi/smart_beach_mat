@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import 'package:smart_beachmat_app/bottom_navigation_scaffold.dart';

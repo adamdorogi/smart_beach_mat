@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:intl/intl.dart';
-import 'package:smart_beachmat_app/api_service.dart';
 
+import 'package:smart_beachmat_app/api_service.dart';
 import 'package:smart_beachmat_app/user.dart';
 
 class SignUpDobForm extends StatefulWidget {
