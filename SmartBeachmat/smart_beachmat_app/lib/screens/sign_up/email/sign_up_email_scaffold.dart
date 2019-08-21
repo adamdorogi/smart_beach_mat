@@ -13,9 +13,32 @@ class SignUpEmailScaffold extends StatelessWidget {
         context,
         title: Text('Sign Up'),
       ),
-      body: Form(
-        key: _formKey,
-        child: SignUpEmailForm(_formKey),
+      body: Column(
+        children: <Widget>[
+          Form(
+            key: _formKey,
+            child: SignUpEmailForm(_formKey),
+          ),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Text(
+                'Already have an account? ',
+                style: Theme.of(context).primaryTextTheme.caption,
+              ),
+              InkWell(
+                onTap: () => print('TODO'),
+                child: Text(
+                  'Log in.',
+                  style: Theme.of(context)
+                      .primaryTextTheme
+                      .caption
+                      .copyWith(color: Theme.of(context).primaryColor),
+                ),
+              )
+            ],
+          ),
+        ],
       ),
     );
   }
