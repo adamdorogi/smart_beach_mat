@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import 'package:smart_beachmat_app/bottom_navigation_widget.dart';
 import 'package:smart_beachmat_app/dashboard_widget.dart';
+import 'package:smart_beachmat_app/widgets/left_app_bar.dart';
 import 'package:smart_beachmat_app/profile_widget.dart';
 
 class BottomNavigationScaffold extends StatefulWidget {
@@ -31,7 +32,7 @@ class _BottomNavigationScaffoldState extends State<BottomNavigationScaffold> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
+      appBar: LeftAppBar(
         title: _pages[_currentIndex].title,
       ),
       body: _pages[_currentIndex],
