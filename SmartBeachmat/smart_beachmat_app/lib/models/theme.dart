@@ -13,11 +13,12 @@ final ThemeData customTheme = ThemeData(
     brightness: Brightness.light,
     elevation: 0.0,
   ),
-  buttonTheme: ThemeData.dark().buttonTheme.copyWith(
-        shape: StadiumBorder(),
-        minWidth: double.infinity,
-        height: 50,
-      ),
+  buttonTheme: ButtonThemeData(
+    shape: StadiumBorder(),
+    minWidth: double.infinity,
+    height: 50,
+    textTheme: ButtonTextTheme.primary,
+  ),
   inputDecorationTheme: InputDecorationTheme(
     contentPadding: EdgeInsets.all(17),
   ),
