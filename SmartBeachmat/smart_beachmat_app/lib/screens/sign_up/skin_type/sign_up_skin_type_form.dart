@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:smart_beachmat_app/screens/sign_up/gender/sign_up_gender_scaffold.dart';
-import 'package:smart_beachmat_app/user.dart';
+import 'package:smart_beachmat_app/models/user.dart';
 import 'package:smart_beachmat_app/widgets/sign_up_button.dart';
 
 class SignUpSkinTypeForm extends StatefulWidget {

@@ -5,7 +5,7 @@ import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart';
 
 import 'package:smart_beachmat_app/api_exception.dart';
-import 'package:smart_beachmat_app/user.dart';
+import 'package:smart_beachmat_app/models/user.dart';
 
 // Singleton
 class ApiService {
