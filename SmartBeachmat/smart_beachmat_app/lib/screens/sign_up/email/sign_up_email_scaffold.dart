@@ -10,6 +10,7 @@ class SignUpEmailScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: LeftAppBar(
+        context,
         title: Text('Sign Up'),
       ),
       body: Form(

@@ -13,6 +13,7 @@ class SignUpGenderScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: LeftAppBar(
+        context,
         title: Text('What\'s your gender?'),
       ),
       body: SignUpGenderForm(_user),

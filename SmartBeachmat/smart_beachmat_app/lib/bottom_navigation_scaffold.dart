@@ -33,6 +33,7 @@ class _BottomNavigationScaffoldState extends State<BottomNavigationScaffold> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: LeftAppBar(
+        context,
         title: _pages[_currentIndex].title,
       ),
       body: _pages[_currentIndex],

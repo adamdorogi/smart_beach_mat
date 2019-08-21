@@ -10,6 +10,7 @@ class SignUpNameScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: LeftAppBar(
+        context,
         title: Text('What should we call you?'),
       ),
       body: Form(

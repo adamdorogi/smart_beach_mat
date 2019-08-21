@@ -13,6 +13,7 @@ class SignUpDobScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: LeftAppBar(
+        context,
         title: Text('When were you born?'),
       ),
       body: SignUpDobForm(_user),

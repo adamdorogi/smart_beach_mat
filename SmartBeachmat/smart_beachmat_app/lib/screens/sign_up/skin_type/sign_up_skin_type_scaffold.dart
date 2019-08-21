@@ -13,6 +13,7 @@ class SignUpSkinTypeScaffold extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: LeftAppBar(
+        context,
         title: Text('What\'s your skin type?'),
       ),
       body: SignUpSkinTypeForm(_user),
