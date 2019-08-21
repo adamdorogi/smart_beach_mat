@@ -46,16 +46,18 @@ class _SignUpEmailFormState extends State<SignUpEmailForm> {
     return Column(
       children: <Widget>[
         TextFormField(
-            controller: _emailController,
-            keyboardType: TextInputType.emailAddress,
-            decoration: InputDecoration(labelText: 'Email'),
-            onSaved: (String value) => _email = value),
+          controller: _emailController,
+          keyboardType: TextInputType.emailAddress,
+          decoration: InputDecoration(labelText: 'Email'),
+          onSaved: (String value) => _email = value,
+        ),
         TextFormField(
-            controller: _passwordController,
-            key: _passwordKey,
-            obscureText: true,
-            decoration: InputDecoration(labelText: 'Password'),
-            onSaved: (String value) => _password = value),
+          controller: _passwordController,
+          key: _passwordKey,
+          obscureText: true,
+          decoration: InputDecoration(labelText: 'Password'),
+          onSaved: (String value) => _password = value,
+        ),
         TextFormField(
           controller: _confirmPasswordController,
           obscureText: true,
@@ -96,27 +98,25 @@ class _SignUpEmailFormState extends State<SignUpEmailForm> {
   }
 
   Future<void> _submit() async {
-    if (widget.formKey.currentState.validate()) {
-      widget.formKey.currentState.save();
+    widget.formKey.currentState.save();
 
-      try {
-        await ApiService().createAccount(email: _email, password: _password);
+    try {
+      await ApiService().createAccount(email: _email, password: _password);
 
-        Response response =
-            await ApiService().createToken(email: _email, password: _password);
+      Response response =
+          await ApiService().createToken(email: _email, password: _password);
 
-        String token = json.decode(response.body)['token'];
-        FlutterSecureStorage storage = FlutterSecureStorage();
-        await storage.write(key: 'token', value: token);
+      String token = json.decode(response.body)['token'];
+      FlutterSecureStorage storage = FlutterSecureStorage();
+      await storage.write(key: 'token', value: token);
 
-        Navigator.pushReplacement(context,
-            MaterialPageRoute(builder: (context) => SignUpNameScaffold()));
-      } on ApiException catch (err) {
-        Scaffold.of(context).showSnackBar(SnackBar(
-          content: Text(err.message),
-          backgroundColor: Colors.red,
-        ));
-      }
+      Navigator.pushReplacement(context,
+          MaterialPageRoute(builder: (context) => SignUpNameScaffold()));
+    } on ApiException catch (err) {
+      Scaffold.of(context).showSnackBar(SnackBar(
+        content: Text(err.message),
+        backgroundColor: Colors.red,
+      ));
     }
   }
 }
