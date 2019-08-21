@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 
 import 'package:smart_beachmat_app/bottom_navigation_scaffold.dart';
+import 'package:smart_beachmat_app/models/theme.dart';
 import 'package:smart_beachmat_app/screens/sign_up/email/sign_up_email_scaffold.dart';
 
 void main() => runApp(MyApp());
@@ -15,6 +16,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      theme: customTheme,
       home: FutureBuilder(
         future: _read(key: 'token'),
         builder: (BuildContext context, AsyncSnapshot<String> snapshot) {
