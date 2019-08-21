@@ -26,55 +26,73 @@ class _SignUpEmailFormState extends State<SignUpEmailForm> {
   String _email;
   String _password;
 
+  TextEditingController _emailController = new TextEditingController();
+  TextEditingController _passwordController = new TextEditingController();
+  TextEditingController _confirmPasswordController =
+      new TextEditingController();
+
+  bool _isButtonEnabled = false;
+
+  @override
+  void initState() {
+    super.initState();
+    _emailController.addListener(_validateForm);
+    _passwordController.addListener(_validateForm);
+    _confirmPasswordController.addListener(_validateForm);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Column(
       children: <Widget>[
         TextFormField(
+            controller: _emailController,
             keyboardType: TextInputType.emailAddress,
             decoration: InputDecoration(labelText: 'Email'),
-            validator: _validateEmail,
             onSaved: (String value) => _email = value),
         TextFormField(
+            controller: _passwordController,
             key: _passwordKey,
             obscureText: true,
             decoration: InputDecoration(labelText: 'Password'),
-            validator: _validatePassword,
             onSaved: (String value) => _password = value),
         TextFormField(
+          controller: _confirmPasswordController,
           obscureText: true,
           decoration: InputDecoration(labelText: 'Confirm password'),
-          validator: _validateConfirmPassword,
         ),
         SignUpButton(
           child: Text('Sign Up'),
-          onPressed: _submit,
+          onPressed: _isButtonEnabled ? _submit : null,
         )
       ],
     );
   }
 
-  String _validateEmail(String email) {
+  bool _validateEmail(String email) {
     final Pattern pattern =
         r'^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$';
-    if (!RegExp(pattern).hasMatch(email)) {
-      return 'Please enter a valid email address.';
-    }
-    return null;
+    return RegExp(pattern).hasMatch(email);
   }
 
-  String _validatePassword(String password) {
-    if (password.length < 8) {
-      return 'Password must be at least 8 characters.';
-    }
-    return null;
+  bool _validatePassword(String password) {
+    return password.length >= 8;
   }
 
-  String _validateConfirmPassword(String confirmPassword) {
-    if (_passwordKey.currentState.value != confirmPassword) {
-      return 'Passwords do not match.';
+  bool _validateConfirmPassword(String confirmPassword) {
+    return _passwordKey.currentState.value == confirmPassword;
+  }
+
+  void _validateForm() {
+    bool isFormValid = _validateEmail(_emailController.text) &&
+        _validatePassword(_passwordController.text) &&
+        _validateConfirmPassword(_confirmPasswordController.text);
+
+    if (_isButtonEnabled != isFormValid) {
+      setState(() {
+        _isButtonEnabled = isFormValid;
+      });
     }
-    return null;
   }
 
   Future<void> _submit() async {
