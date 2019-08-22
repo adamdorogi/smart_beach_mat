@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 import 'package:intl/intl.dart';
-import 'package:smart_beachmat_app/api_exception.dart';
 
+import 'package:smart_beachmat_app/api_exception.dart';
 import 'package:smart_beachmat_app/api_service.dart';
 import 'package:smart_beachmat_app/main.dart';
 import 'package:smart_beachmat_app/models/user.dart';
@@ -41,7 +41,7 @@ class _SignUpDobFormState extends State<SignUpDobForm> {
           onPressed: _selectedDate.difference(DateTime.now()).inDays == 0
               ? null
               : _continue,
-        )
+        ),
       ],
     );
   }
@@ -68,12 +68,16 @@ class _SignUpDobFormState extends State<SignUpDobForm> {
       await ApiService().createUser(widget.user);
 
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => MyApp()));
+        context,
+        MaterialPageRoute(builder: (context) => MyApp()),
+      );
     } on ApiException catch (err) {
-      Scaffold.of(context).showSnackBar(SnackBar(
-        content: Text(err.message),
-        backgroundColor: Colors.red,
-      ));
+      Scaffold.of(context).showSnackBar(
+        SnackBar(
+          content: Text(err.message),
+          backgroundColor: Colors.red,
+        ),
+      );
     }
   }
 }

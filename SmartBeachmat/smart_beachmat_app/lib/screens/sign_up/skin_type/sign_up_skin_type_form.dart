@@ -45,7 +45,7 @@ class _SignUpSkinTypeFormState extends State<SignUpSkinTypeForm> {
         SignUpButton(
           child: Text('Continue'),
           onPressed: _currentIndex == null ? null : _continue,
-        )
+        ),
       ],
     );
   }
@@ -54,8 +54,9 @@ class _SignUpSkinTypeFormState extends State<SignUpSkinTypeForm> {
     widget.user.skinType = _currentIndex + 2;
 
     Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => SignUpGenderScaffold(widget.user)));
+      context,
+      MaterialPageRoute(
+          builder: (context) => SignUpGenderScaffold(widget.user)),
+    );
   }
 }

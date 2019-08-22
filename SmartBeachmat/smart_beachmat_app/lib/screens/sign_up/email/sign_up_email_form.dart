@@ -66,7 +66,7 @@ class _SignUpEmailFormState extends State<SignUpEmailForm> {
         SignUpButton(
           child: Text('Sign Up'),
           onPressed: _isButtonEnabled ? _submit : null,
-        )
+        ),
       ],
     );
   }
@@ -110,13 +110,17 @@ class _SignUpEmailFormState extends State<SignUpEmailForm> {
       FlutterSecureStorage storage = FlutterSecureStorage();
       await storage.write(key: 'token', value: token);
 
-      Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (context) => SignUpNameScaffold()));
+      Navigator.pushReplacement(
+        context,
+        MaterialPageRoute(builder: (context) => SignUpNameScaffold()),
+      );
     } on ApiException catch (err) {
-      Scaffold.of(context).showSnackBar(SnackBar(
-        content: Text(err.message),
-        backgroundColor: Colors.red,
-      ));
+      Scaffold.of(context).showSnackBar(
+        SnackBar(
+          content: Text(err.message),
+          backgroundColor: Colors.red,
+        ),
+      );
     }
   }
 }

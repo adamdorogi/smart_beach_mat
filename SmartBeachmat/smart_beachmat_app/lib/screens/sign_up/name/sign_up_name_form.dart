@@ -41,7 +41,7 @@ class _SignUpNameFormState extends State<SignUpNameForm> {
         SignUpButton(
           child: Text('Continue'),
           onPressed: _isButtonEnabled ? _continue : null,
-        )
+        ),
       ],
     );
   }
@@ -58,9 +58,12 @@ class _SignUpNameFormState extends State<SignUpNameForm> {
   void _continue() {
     widget.formKey.currentState.save();
 
-    User user = User(name: _name[0].toUpperCase() + _name.substring(1).toLowerCase());
+    User user =
+        User(name: _name[0].toUpperCase() + _name.substring(1).toLowerCase());
 
-    Navigator.push(context,
-        MaterialPageRoute(builder: (context) => SignUpSkinTypeScaffold(user)));
+    Navigator.push(
+      context,
+      MaterialPageRoute(builder: (context) => SignUpSkinTypeScaffold(user)),
+    );
   }
 }

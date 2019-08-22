@@ -55,8 +55,8 @@ class _SignUpGenderFormState extends State<SignUpGenderForm> {
     widget.user.gender = ['m', 'f'][_currentIndex];
 
     Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (context) => SignUpDobScaffold(widget.user)));
+      context,
+      MaterialPageRoute(builder: (context) => SignUpDobScaffold(widget.user)),
+    );
   }
 }

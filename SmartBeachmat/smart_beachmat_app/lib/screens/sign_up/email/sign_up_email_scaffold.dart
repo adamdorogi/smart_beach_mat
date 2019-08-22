@@ -28,8 +28,10 @@ class SignUpEmailScaffold extends StatelessWidget {
                 style: Theme.of(context).primaryTextTheme.caption,
               ),
               InkWell(
-                onTap: () => Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => LogInScaffold())),
+                onTap: () => Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (context) => LogInScaffold()),
+                ),
                 child: Text(
                   'Log in.',
                   style: Theme.of(context)
@@ -37,7 +39,7 @@ class SignUpEmailScaffold extends StatelessWidget {
                       .caption
                       .copyWith(color: Theme.of(context).primaryColor),
                 ),
-              )
+              ),
             ],
           ),
         ],

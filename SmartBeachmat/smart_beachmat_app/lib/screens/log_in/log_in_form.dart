@@ -1,5 +1,4 @@
 import 'dart:convert';
-
 import 'package:flutter/material.dart';
 
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
@@ -56,7 +55,7 @@ class _LogInFormState extends State<LogInForm> {
         SignUpButton(
           child: Text('Log In'),
           onPressed: _isButtonEnabled ? _submit : null,
-        )
+        ),
       ],
     );
   }
@@ -94,12 +93,16 @@ class _LogInFormState extends State<LogInForm> {
       await storage.write(key: 'token', value: token);
 
       Navigator.pushReplacement(
-          context, MaterialPageRoute(builder: (context) => MyApp()));
+        context,
+        MaterialPageRoute(builder: (context) => MyApp()),
+      );
     } on ApiException catch (err) {
-      Scaffold.of(context).showSnackBar(SnackBar(
-        content: Text(err.message),
-        backgroundColor: Colors.red,
-      ));
+      Scaffold.of(context).showSnackBar(
+        SnackBar(
+          content: Text(err.message),
+          backgroundColor: Colors.red,
+        ),
+      );
     }
   }
 }
