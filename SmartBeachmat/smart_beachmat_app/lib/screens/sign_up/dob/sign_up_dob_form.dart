@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import 'package:intl/intl.dart';
+import 'package:smart_beachmat_app/api_exception.dart';
 
 import 'package:smart_beachmat_app/api_service.dart';
 import 'package:smart_beachmat_app/main.dart';
@@ -63,9 +64,16 @@ class _SignUpDobFormState extends State<SignUpDobForm> {
   Future<void> _continue() async {
     widget.user.dob = DateFormat('yyyy-MM-dd').format(_selectedDate);
 
-    await ApiService().createUser(widget.user);
+    try {
+      await ApiService().createUser(widget.user);
 
-    Navigator.pushReplacement(context,
-          MaterialPageRoute(builder: (context) => MyApp()));
+      Navigator.pushReplacement(
+          context, MaterialPageRoute(builder: (context) => MyApp()));
+    } on ApiException catch (err) {
+      Scaffold.of(context).showSnackBar(SnackBar(
+        content: Text(err.message),
+        backgroundColor: Colors.red,
+      ));
+    }
   }
 }
