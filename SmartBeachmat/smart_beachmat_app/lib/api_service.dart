@@ -38,6 +38,18 @@ class ApiService {
     }
   }
 
+  Future<Response> _get(String url, Map<String, String> headers) async {
+    try {
+      final Response response = await get(url, headers: headers);
+      if (!_isSuccess(response.statusCode)) {
+        throw ApiException.fromJson(json.decode(response.body));
+      }
+      return response;
+    } on SocketException catch (_) {
+      throw ApiException('Could not connect to internet.');
+    }
+  }
+
   Future<Response> createToken({String email, String password}) async {
     return _post(
       '$_scheme://$_host/v$_version/tokens',
@@ -85,6 +97,19 @@ class ApiService {
         'skin_type': user.skinType.toString(),
         'dob': user.dob,
         'gender': user.gender,
+      },
+    );
+  }
+
+  Future<Response> readUsers() async {
+    FlutterSecureStorage storage = FlutterSecureStorage();
+    String token = await storage.read(key: 'token');
+
+    return _get(
+      '$_scheme://$_host/v$_version/users',
+      {
+        HttpHeaders.acceptHeader: 'application/json',
+        HttpHeaders.authorizationHeader: token,
       },
     );
   }
