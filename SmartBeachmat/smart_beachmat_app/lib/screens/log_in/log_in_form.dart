@@ -7,6 +7,8 @@ import 'package:http/http.dart';
 import 'package:smart_beachmat_app/api_exception.dart';
 import 'package:smart_beachmat_app/api_service.dart';
 import 'package:smart_beachmat_app/main.dart';
+import 'package:smart_beachmat_app/models/database_provider.dart';
+import 'package:smart_beachmat_app/models/user.dart';
 import 'package:smart_beachmat_app/widgets/sign_up_button.dart';
 
 class LogInForm extends StatefulWidget {
@@ -85,12 +87,18 @@ class _LogInFormState extends State<LogInForm> {
     widget.formKey.currentState.save();
 
     try {
-      Response response =
+      Response tokenResponse =
           await ApiService().createToken(email: _email, password: _password);
 
-      String token = json.decode(response.body)['token'];
+      String token = json.decode(tokenResponse.body)['token'];
       FlutterSecureStorage storage = FlutterSecureStorage();
       await storage.write(key: 'token', value: token);
+
+      Response userResponse = await ApiService().readUsers();
+
+      for (var user in json.decode(userResponse.body)) {
+        await DatabaseProvider.addUser(User.fromJson(user));
+      }
 
       Navigator.pushReplacement(
         context,
