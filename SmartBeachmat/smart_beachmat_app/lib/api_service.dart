@@ -75,7 +75,6 @@ class ApiService {
       {
         'email': email,
         'password': password,
-        'ip_address': '12.34.56.78',
         'device_id': deviceId,
         'device_name': deviceName,
       },

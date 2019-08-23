@@ -51,7 +51,7 @@ class Token {
         // Extract attributes.
         $email = $attributes['email'];
         $password = $attributes['password'];
-        $ip_address = $attributes['ip_address'];
+        $ip_address = '12.34.56.78'; // $_SERVER['REMOTE_ADDR']; // TODO: REMOVE COMMENT WHEN IN PRODUCTION ENVIRONMENT (can't parse local IP (192.168.1.110)).
         $device_id = $attributes['device_id'];
         $device_name = $attributes['device_name'];
 
