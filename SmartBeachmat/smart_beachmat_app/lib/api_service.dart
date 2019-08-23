@@ -1,6 +1,7 @@
 import 'dart:convert';
 import 'dart:io';
 
+import 'package:device_info/device_info.dart';
 import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart';
 
@@ -12,7 +13,7 @@ class ApiService {
   static final ApiService _apiService = ApiService._internal();
 
   final String _scheme = 'http';
-  final String _host = 'localhost';
+  final String _host = '192.168.1.110';
   final int _version = 1;
 
   factory ApiService() {
@@ -27,7 +28,7 @@ class ApiService {
 
   Future<Response> _post(
       String url, Map<String, String> headers, Map<String, String> body) async {
-    try {
+    // try {
       final Response response = await post(url, headers: headers, body: body);
       if (!_isSuccess(response.statusCode)) {
         throw ApiException.fromJson(json.decode(response.body));
@@ -51,6 +52,20 @@ class ApiService {
   }
 
   Future<Response> createToken({String email, String password}) async {
+    DeviceInfoPlugin deviceInfo = DeviceInfoPlugin();
+    String deviceId;
+    String deviceName;
+
+    if (Platform.isIOS) {
+      IosDeviceInfo iosInfo = await deviceInfo.iosInfo;
+      deviceId = iosInfo.identifierForVendor;
+      deviceName = iosInfo.name;
+    } else if (Platform.isAndroid) {
+      AndroidDeviceInfo androidInfo = await deviceInfo.androidInfo;
+      deviceId = androidInfo.androidId;
+      deviceName = androidInfo.model;
+    }
+
     return _post(
       '$_scheme://$_host/v$_version/tokens',
       {
@@ -61,8 +76,8 @@ class ApiService {
         'email': email,
         'password': password,
         'ip_address': '12.34.56.78',
-        'device_id': '9ffbd91f-b710-42c6-9bef-6fd5d64b1592',
-        'device_name': 'Test iPhone'
+        'device_id': deviceId,
+        'device_name': deviceName,
       },
     );
   }
