@@ -28,7 +28,7 @@ class ApiService {
 
   Future<Response> _post(
       String url, Map<String, String> headers, Map<String, String> body) async {
-    // try {
+    try {
       final Response response = await post(url, headers: headers, body: body);
       if (!_isSuccess(response.statusCode)) {
         throw ApiException.fromJson(json.decode(response.body));
