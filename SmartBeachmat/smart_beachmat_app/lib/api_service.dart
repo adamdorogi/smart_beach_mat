@@ -10,7 +10,7 @@ import 'package:smart_beachmat_app/models/user.dart';
 
 // Singleton
 class ApiService {
-  static final ApiService _apiService = ApiService._internal();
+  static final ApiService _apiService = ApiService._();
 
   final String _scheme = 'http';
   final String _host = '192.168.1.110';
@@ -20,7 +20,7 @@ class ApiService {
     return _apiService;
   }
 
-  ApiService._internal(); // Constructor.
+  ApiService._(); // Constructor.
 
   bool _isSuccess(int statusCode) {
     return statusCode >= 200 && statusCode < 300;
