@@ -73,7 +73,7 @@ class Token {
         $token =  bin2hex(random_bytes(20));
 
         // Add token to database.
-        $statement = $this->connection->prepare('INSERT INTO `token` (`token`, `account_id`, `ip_address`, `device_id`, `device_name`) VALUES (:token, :account_id, INET_ATON(:ip_address), UUID_TO_BIN(:device_id), :device_name)');
+        $statement = $this->connection->prepare('INSERT INTO `token` (`token`, `account_id`, `ip_address`, `device_id`, `device_name`) VALUES (:token, :account_id, INET_ATON(:ip_address), :device_id, :device_name)');
         $statement->bindParam(':token', $token);
         $statement->bindParam(':account_id', $account_id);
         $statement->bindParam(':ip_address', $ip_address);
@@ -99,7 +99,7 @@ class Token {
      */
     private function read($token) {
         // Get all device IDs belonging to user with given token.
-        $statement = $this->connection->prepare('SELECT INET_NTOA(`ip_address`) as `ip_address`, BIN_TO_UUID(`device_id`) AS `device_id`, `device_name`, `created_on` FROM `token` WHERE `account_id` IN (SELECT `account_id` FROM `token` WHERE `token` = :token)');
+        $statement = $this->connection->prepare('SELECT INET_NTOA(`ip_address`) as `ip_address`, `device_id`, `device_name`, `created_on` FROM `token` WHERE `account_id` IN (SELECT `account_id` FROM `token` WHERE `token` = :token)');
         $statement->bindParam(':token', $token);
         $statement->execute();
 
@@ -121,7 +121,7 @@ class Token {
      */
     private function delete($token, $device_id) {
         // Delete the `token` with the given `device_id`.
-        $statement = $this->connection->prepare('DELETE FROM `token` WHERE `device_id` = UUID_TO_BIN(:device_id) AND `account_id` IN (SELECT `account_id` FROM (SELECT `account_id` FROM `token` WHERE `token` = :token) AS temp)');
+        $statement = $this->connection->prepare('DELETE FROM `token` WHERE `device_id` = :device_id AND `account_id` IN (SELECT `account_id` FROM (SELECT `account_id` FROM `token` WHERE `token` = :token) AS temp)');
         $statement->bindParam(':device_id', $device_id);
         $statement->bindParam(':token', $token);
         $statement->execute();
