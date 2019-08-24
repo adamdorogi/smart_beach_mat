@@ -94,18 +94,21 @@ class _LogInFormState extends State<LogInForm> {
       await SecureStorageProvider.setToken(token);
 
       Response userResponse = await ApiService().readUsers();
-      final body = json.decode(userResponse.body);
-      if (body is List) {
-        for (var user in body) {
-          await DatabaseProvider.addUser(User.fromJson(user));
-        }
+      for (var user in json.decode(userResponse.body)) {
+        await DatabaseProvider.addUser(User.fromJson(user));
       }
 
-      Navigator.pushReplacement(
+      return Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => MyApp()),
       );
     } on ApiException catch (err) {
+      if (err.message == 'Users could not be found.') {
+        return Navigator.pushReplacement(
+          context,
+          MaterialPageRoute(builder: (context) => MyApp()),
+        );
+      }
       Scaffold.of(context).showSnackBar(
         SnackBar(
           content: Text(err.message),
