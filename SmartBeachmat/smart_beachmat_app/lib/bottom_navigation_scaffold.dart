@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-import 'package:smart_beachmat_app/bottom_navigation_widget.dart';
 import 'package:smart_beachmat_app/dashboard_widget.dart';
+import 'package:smart_beachmat_app/widgets/bottom_navigation_widget.dart';
 import 'package:smart_beachmat_app/widgets/left_app_bar.dart';
 import 'package:smart_beachmat_app/profile_widget.dart';
 
