@@ -5,11 +5,11 @@ import 'package:smart_beachmat_app/models/user.dart';
 
 // Singleton.
 class DatabaseProvider {
-  static final DatabaseProvider _apiService = DatabaseProvider._();
+  static final DatabaseProvider _databaseProvider = DatabaseProvider._();
   static Database _database;
 
   factory DatabaseProvider() {
-    return _apiService;
+    return _databaseProvider;
   }
 
   // Constructor.
@@ -41,7 +41,7 @@ class DatabaseProvider {
     final Database db = await database;
     final List<Map<String, dynamic>> map = await db.query('users');
 
-    return List.generate(map.length, (i) {
+    return List<User>.generate(map.length, (i) {
       return User(
         id: map[i]['id'],
         name: map[i]['name'],
@@ -70,5 +70,10 @@ class DatabaseProvider {
       },
       conflictAlgorithm: ConflictAlgorithm.replace,
     );
+  }
+
+  static Future<void> deleteUsers() async {
+    final Database db = await database;
+    await db.delete('users');
   }
 }
