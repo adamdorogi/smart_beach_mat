@@ -1,13 +1,13 @@
 import 'dart:convert';
 import 'package:flutter/material.dart';
 
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart';
 
 import 'package:smart_beachmat_app/api_exception.dart';
 import 'package:smart_beachmat_app/api_service.dart';
 import 'package:smart_beachmat_app/main.dart';
 import 'package:smart_beachmat_app/models/database_provider.dart';
+import 'package:smart_beachmat_app/models/secure_storage_provider.dart';
 import 'package:smart_beachmat_app/models/user.dart';
 import 'package:smart_beachmat_app/widgets/sign_up_button.dart';
 
@@ -91,13 +91,14 @@ class _LogInFormState extends State<LogInForm> {
           await ApiService().createToken(email: _email, password: _password);
 
       String token = json.decode(tokenResponse.body)['token'];
-      FlutterSecureStorage storage = FlutterSecureStorage();
-      await storage.write(key: 'token', value: token);
+      await SecureStorageProvider.setToken(token);
 
       Response userResponse = await ApiService().readUsers();
-
-      for (var user in json.decode(userResponse.body)) {
-        await DatabaseProvider.addUser(User.fromJson(user));
+      final body = json.decode(userResponse.body);
+      if (body is List) {
+        for (var user in body) {
+          await DatabaseProvider.addUser(User.fromJson(user));
+        }
       }
 
       Navigator.pushReplacement(
