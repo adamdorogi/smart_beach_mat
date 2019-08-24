@@ -72,11 +72,10 @@ class _SignUpDobFormState extends State<SignUpDobForm> {
 
       Response userResponse = await ApiService().readUsers();
       for (var user in json.decode(userResponse.body)) {
-        User test = User.fromJson(user);
-        await DatabaseProvider.addUser(test);
+        await DatabaseProvider.addUser(User.fromJson(user));
       }
 
-      Navigator.pushReplacement(
+      return Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => MyApp()),
       );

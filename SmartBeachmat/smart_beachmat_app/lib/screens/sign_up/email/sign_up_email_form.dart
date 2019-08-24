@@ -109,7 +109,7 @@ class _SignUpEmailFormState extends State<SignUpEmailForm> {
       String token = json.decode(response.body)['token'];
       await SecureStorageProvider.setToken(token);
 
-      Navigator.pushReplacement(
+      return Navigator.pushReplacement(
         context,
         MaterialPageRoute(builder: (context) => SignUpNameScaffold()),
       );

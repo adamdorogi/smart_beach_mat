@@ -25,9 +25,11 @@ class MyApp extends StatelessWidget {
                   (BuildContext context, AsyncSnapshot<List<User>> snapshot) {
                 if (snapshot.hasData && snapshot.data.isNotEmpty) {
                   return BottomNavigationScaffold();
-                } else {
-                  return SignUpNameScaffold();
+                } else if (snapshot.connectionState ==
+                    ConnectionState.waiting) {
+                  return Scaffold();
                 }
+                return SignUpNameScaffold();
               },
             );
           } else if (snapshot.connectionState == ConnectionState.waiting) {
