@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 
 import 'package:http/http.dart';
 
-import 'package:smart_beachmat_app/api_exception.dart';
-import 'package:smart_beachmat_app/api_service.dart';
 import 'package:smart_beachmat_app/main.dart';
+import 'package:smart_beachmat_app/models/api_exception.dart';
+import 'package:smart_beachmat_app/models/api_service.dart';
 import 'package:smart_beachmat_app/models/database_provider.dart';
 import 'package:smart_beachmat_app/models/secure_storage_provider.dart';
 import 'package:smart_beachmat_app/models/user.dart';
