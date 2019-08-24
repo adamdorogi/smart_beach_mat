@@ -36,7 +36,7 @@
 */
 
 /* TODO:
- * - remove `Serial` functions.
+ * - remove `print...` functions.
  */
 
 // Bluetooth
@@ -45,30 +45,30 @@
 #include <BLEUtils.h>
 #include <BLE2902.h>
 
-// UV
+// UV sensing
 #include <Wire.h>
 #include "Adafruit_SI1145.h"
 
-// Service UUIDs (https://www.bluetooth.com/specifications/gatt/services)
+// BLE service UUIDs (https://www.bluetooth.com/specifications/gatt/services)
 #define ENVIRONMENTAL_SENSING_SERVICE_UUID "181A"
 #define BATTERY_SERVICE_UUID               "180F"
 
-// Characteristic UUIDs (https://www.bluetooth.com/specifications/gatt/characteristics)
+// BLE characteristic UUIDs (https://www.bluetooth.com/specifications/gatt/characteristics)
 #define UV_INDEX_CHARACTERISTIC_UUID      "2A76"
 #define BATTERY_LEVEL_CHARACTERISTIC_UUID "2A19"
 
 // Pins
-#define LED_PIN    5
 #define BUTTON_PIN 0
 
-// Time period
+// Time periods
 #define ADVERTISING_PERIOD  2000
 #define NOTIFICATION_PERIOD 5000
 
 
 BLEServer* pServer;
 BLECharacteristic* uvIndexCharacteristic;
-BLEAdvertising* pAdvertising;
+BLECharacteristic* batteryLevelCharacteristic;
+BLEAdvertising* deviceAdvertising;
 
 Adafruit_SI1145 sensor;
 
@@ -102,9 +102,6 @@ class ServerCallbacks: public BLEServerCallbacks {
 void setup() {
   Serial.begin(115200);
   
-  // Set up LED pin.
-  pinMode(LED_PIN, OUTPUT);
-  
   // Check for UV sensor.
   sensor = Adafruit_SI1145();
   while (!sensor.begin());
@@ -117,27 +114,36 @@ void setup() {
   pServer = BLEDevice::createServer();
   pServer->setCallbacks(new ServerCallbacks());
 
-  // Create the BLE service.
+  // Create the BLE environmental sensing service.
   BLEService* environmentalSensingService = pServer->createService(ENVIRONMENTAL_SENSING_SERVICE_UUID);
 
-  // Create the BLE characteristic.
+  // Create the BLE UV index characteristic.
   uvIndexCharacteristic = environmentalSensingService->createCharacteristic(
                             UV_INDEX_CHARACTERISTIC_UUID,
-                            BLECharacteristic::PROPERTY_READ   |
-                            BLECharacteristic::PROPERTY_WRITE  |
-                            BLECharacteristic::PROPERTY_NOTIFY |
-                            BLECharacteristic::PROPERTY_INDICATE
+                            BLECharacteristic::PROPERTY_NOTIFY
                           );
 
-  // Start the service.
+  // Start the environmental sensing service.
   environmentalSensingService->start();
+
+  // Create the BLE battery service.
+  BLEService* batteryService = pServer->createService(BATTERY_SERVICE_UUID);
+
+  // Create the BLE battery level characteristic.
+  batteryLevelCharacteristic = batteryService->createCharacteristic(
+                            BATTERY_LEVEL_CHARACTERISTIC_UUID,
+                            BLECharacteristic::PROPERTY_NOTIFY
+                          );
+
+  // Start the battery service.
+  batteryService->start();
   
-  BLEAdvertisementData oAdvertisementData = BLEAdvertisementData();
+  BLEAdvertisementData advertisementData = BLEAdvertisementData();
 
   // Set up advertisement.
-  pAdvertising = BLEDevice::getAdvertising();
-  pAdvertising->setScanResponse(false);
-  pAdvertising->setAdvertisementData(oAdvertisementData);
+  deviceAdvertising = BLEDevice::getAdvertising();
+//  deviceAdvertising->setScanResponse(false);
+//  deviceAdvertising->setAdvertisementData(advertisementData);
 }
 
 /*
@@ -153,11 +159,18 @@ void loop() {
 
   // Notify connected device of UV index.
   if (isConnected) {
-    float uvIndex = sensor.readUV()/100.0;
+    float uvIndex = sensor.readUV() / 100.0;
+    int batteryLevel = 40;
+
     Serial.print("UV: ");  Serial.println(uvIndex);
+    Serial.print("BATTERY: ");  Serial.println(batteryLevel);
     
     uvIndexCharacteristic->setValue(uvIndex);
     uvIndexCharacteristic->notify();
+
+    batteryLevelCharacteristic->setValue(batteryLevel);
+    batteryLevelCharacteristic->notify();
+    
     delay(NOTIFICATION_PERIOD);
   }
 }
@@ -166,7 +179,7 @@ void loop() {
  * Start advertising the `BLEDevice`.
  */
 void startAdvertising() {
-  pAdvertising->start();
+  deviceAdvertising->start();
   isAdvertising = true;
   Serial.println("Advertisement started.");
 }
@@ -175,7 +188,7 @@ void startAdvertising() {
  * Stop advertising the `BLEDevice`
  */
 void stopAdvertising() {
-  pAdvertising->stop();
+  deviceAdvertising->stop();
   isAdvertising = false;
   Serial.println("Advertisement ended.");
 }
