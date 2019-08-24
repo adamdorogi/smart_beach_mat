@@ -1,10 +1,13 @@
+import 'dart:convert';
 import 'package:flutter/material.dart';
 
+import 'package:http/http.dart';
 import 'package:intl/intl.dart';
 
 import 'package:smart_beachmat_app/api_exception.dart';
 import 'package:smart_beachmat_app/api_service.dart';
 import 'package:smart_beachmat_app/main.dart';
+import 'package:smart_beachmat_app/models/database_provider.dart';
 import 'package:smart_beachmat_app/models/user.dart';
 import 'package:smart_beachmat_app/widgets/sign_up_button.dart';
 
@@ -66,6 +69,12 @@ class _SignUpDobFormState extends State<SignUpDobForm> {
 
     try {
       await ApiService().createUser(widget.user);
+
+      Response userResponse = await ApiService().readUsers();
+      for (var user in json.decode(userResponse.body)) {
+        User test = User.fromJson(user);
+        await DatabaseProvider.addUser(test);
+      }
 
       Navigator.pushReplacement(
         context,
