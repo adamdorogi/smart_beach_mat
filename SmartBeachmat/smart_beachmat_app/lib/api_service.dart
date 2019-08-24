@@ -2,10 +2,10 @@ import 'dart:convert';
 import 'dart:io';
 
 import 'package:device_info/device_info.dart';
-import 'package:flutter_secure_storage/flutter_secure_storage.dart';
 import 'package:http/http.dart';
 
 import 'package:smart_beachmat_app/api_exception.dart';
+import 'package:smart_beachmat_app/models/secure_storage_provider.dart';
 import 'package:smart_beachmat_app/models/user.dart';
 
 // Singleton
@@ -96,8 +96,7 @@ class ApiService {
   }
 
   Future<void> createUser(User user) async {
-    FlutterSecureStorage storage = FlutterSecureStorage();
-    String token = await storage.read(key: 'token');
+    String token = await SecureStorageProvider.getToken();
 
     await _post(
       '$_scheme://$_host/v$_version/users',
@@ -116,8 +115,7 @@ class ApiService {
   }
 
   Future<Response> readUsers() async {
-    FlutterSecureStorage storage = FlutterSecureStorage();
-    String token = await storage.read(key: 'token');
+    String token = await SecureStorageProvider.getToken();
 
     return _get(
       '$_scheme://$_host/v$_version/users',
