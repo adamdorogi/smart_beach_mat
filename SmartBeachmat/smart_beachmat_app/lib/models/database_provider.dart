@@ -26,7 +26,8 @@ class DatabaseProvider {
         return db.execute(
           'CREATE TABLE users(' +
               'id TEXT PRIMARY KEY,' +
-              'name TEXT, skin_type INTEGER,' +
+              'name TEXT,' +
+              'skin_type INTEGER,' +
               'gender TEXT, dob TEXT,' +
               'is_owner INTEGER,' +
               'created_on TEXT)',
@@ -45,10 +46,10 @@ class DatabaseProvider {
       return User(
         id: map[i]['id'],
         name: map[i]['name'],
-        skinType: int.parse(map[i]['skin_type']),
+        skinType: map[i]['skin_type'],
         gender: map[i]['gender'],
         dob: map[i]['dob'],
-        isOwner: map[i]['is_owner'] == '1',
+        isOwner: map[i]['is_owner'] == 1,
         createdOn: map[i]['created_on'],
       );
     });
