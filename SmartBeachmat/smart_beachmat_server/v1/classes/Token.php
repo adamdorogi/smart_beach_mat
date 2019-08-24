@@ -73,7 +73,7 @@ class Token {
         $token =  bin2hex(random_bytes(20));
 
         // Add token to database.
-        $statement = $this->connection->prepare('INSERT INTO `token` (`token`, `account_id`, `ip_address`, `device_id`, `device_name`) VALUES (:token, :account_id, INET_ATON(:ip_address), :device_id, :device_name) ON DUPLICATE KEY UPDATE `token` = VALUES(`token`), `ip_address` = VALUES(`ip_address`), `device_name` = VALUES(`device_name`), `created_on` = VALUES(`created_on`)');
+        $statement = $this->connection->prepare('INSERT INTO `token` (`token`, `account_id`, `ip_address`, `device_id`, `device_name`) VALUES (:token, :account_id, INET_ATON(:ip_address), :device_id, :device_name) ON DUPLICATE KEY UPDATE `token` = VALUES(`token`), `account_id` = VALUES(`account_id`), `ip_address` = VALUES(`ip_address`), `device_name` = VALUES(`device_name`), `created_on` = VALUES(`created_on`)');
         $statement->bindParam(':token', $token);
         $statement->bindParam(':account_id', $account_id);
         $statement->bindParam(':ip_address', $ip_address);
