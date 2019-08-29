@@ -137,13 +137,12 @@ void setup() {
 
   // Start the battery service.
   batteryService->start();
-  
-  BLEAdvertisementData advertisementData = BLEAdvertisementData();
 
   // Set up advertisement.
   deviceAdvertising = BLEDevice::getAdvertising();
-//  deviceAdvertising->setScanResponse(false);
-//  deviceAdvertising->setAdvertisementData(advertisementData);
+  deviceAdvertising->setScanResponse(false);
+  deviceAdvertising->addServiceUUID(ENVIRONMENTAL_SENSING_SERVICE_UUID);
+  deviceAdvertising->addServiceUUID(BATTERY_SERVICE_UUID);
 }
 
 /*
