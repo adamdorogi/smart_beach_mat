@@ -39,10 +39,11 @@ class DatabaseProvider {
   }
 
   static Future<List<User>> getUsers() async {
+    print('GETTING USERS...'); // TODO: Remove
     final Database db = await database;
     final List<Map<String, dynamic>> map = await db.query('users');
 
-    return List<User>.generate(map.length, (i) {
+    List<User> users = await List<User>.generate(map.length, (i) {
       return User(
         id: map[i]['id'],
         name: map[i]['name'],
@@ -53,9 +54,14 @@ class DatabaseProvider {
         createdOn: map[i]['created_on'],
       );
     });
+
+    print('GOT USERS: ${users.toString()}'); // TODO: Remove
+
+    return users;
   }
 
   static Future<void> addUser(User user) async {
+    print('ADDING USER: ${user.toString()}'); // TODO: Remove
     final Database db = await database;
 
     await db.insert(
@@ -74,6 +80,7 @@ class DatabaseProvider {
   }
 
   static Future<void> deleteUsers() async {
+    print('DELETING USERS...'); // TODO: Remove
     final Database db = await database;
     await db.delete('users');
   }

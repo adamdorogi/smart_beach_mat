@@ -57,11 +57,7 @@
 #define UV_INDEX_CHARACTERISTIC_UUID      "2A76"
 #define BATTERY_LEVEL_CHARACTERISTIC_UUID "2A19"
 
-// Pins
-#define BUTTON_PIN 0
-
 // Time periods
-#define ADVERTISING_PERIOD  2000
 #define NOTIFICATION_PERIOD 5000
 
 
@@ -72,7 +68,6 @@ BLEAdvertising* deviceAdvertising;
 
 Adafruit_SI1145 sensor;
 
-bool isAdvertising = false;
 bool isConnected = false;
 
 /*
@@ -143,19 +138,13 @@ void setup() {
   deviceAdvertising->setScanResponse(false);
   deviceAdvertising->addServiceUUID(ENVIRONMENTAL_SENSING_SERVICE_UUID);
   deviceAdvertising->addServiceUUID(BATTERY_SERVICE_UUID);
+  deviceAdvertising->start();
 }
 
 /*
  * Loop continuously while the device is powered on.
  */
 void loop() {
-  // Advertise on button press.
-  if (digitalRead(BUTTON_PIN) == LOW && !isAdvertising && !isConnected) {
-    startAdvertising();
-    delay(ADVERTISING_PERIOD);
-    stopAdvertising();
-  }
-
   // Notify connected device of UV index.
   if (isConnected) {
     float uvIndex = sensor.readUV() / 100.0;
@@ -172,22 +161,4 @@ void loop() {
     
     delay(NOTIFICATION_PERIOD);
   }
-}
-
-/*
- * Start advertising the `BLEDevice`.
- */
-void startAdvertising() {
-  deviceAdvertising->start();
-  isAdvertising = true;
-  Serial.println("Advertisement started.");
-}
-
-/*
- * Stop advertising the `BLEDevice`
- */
-void stopAdvertising() {
-  deviceAdvertising->stop();
-  isAdvertising = false;
-  Serial.println("Advertisement ended.");
 }

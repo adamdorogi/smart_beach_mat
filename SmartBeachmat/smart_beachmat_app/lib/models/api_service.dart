@@ -12,8 +12,8 @@ import 'package:smart_beachmat_app/models/user.dart';
 class ApiService {
   static final ApiService _apiService = ApiService._();
 
-  final String _scheme = 'http';
-  final String _host = '192.168.1.110';
+  final String _scheme = 'https';
+  final String _host = 'pressurized-magneto.000webhostapp.com';
   final int _version = 1;
 
   factory ApiService() {
@@ -28,13 +28,16 @@ class ApiService {
 
   Future<Response> _post(
       String url, Map<String, String> headers, Map<String, String> body) async {
+    print('POSTING...'); // TODO: Remove
     try {
       final Response response = await post(url, headers: headers, body: body);
       if (!_isSuccess(response.statusCode)) {
+        print('INVALID STATUS CODE: ${response.statusCode}: ${response.body}'); // TODO: Remove
         throw ApiException.fromJson(json.decode(response.body));
       }
       return response;
-    } on SocketException catch (_) {
+    } on SocketException catch (err) {
+      print('SOCKETEXCEPTION: ${err}'); // TODO: Remove
       throw ApiException('Could not connect to internet.');
     }
   }
@@ -43,10 +46,12 @@ class ApiService {
     try {
       final Response response = await get(url, headers: headers);
       if (!_isSuccess(response.statusCode)) {
+        print('INVALID STATUS CODE: ${response.statusCode}: ${response.body}'); // TODO: Remove
         throw ApiException.fromJson(json.decode(response.body));
       }
       return response;
-    } on SocketException catch (_) {
+    } on SocketException catch (err) {
+      print('SOCKETEXCEPTION: ${err}'); // TODO: Remove
       throw ApiException('Could not connect to internet.');
     }
   }
