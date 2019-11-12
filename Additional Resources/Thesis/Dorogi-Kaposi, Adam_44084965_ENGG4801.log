@@ -1,0 +1,985 @@
+This is pdfTeX, Version 3.14159265-2.6-1.40.20 (TeX Live 2019) (preloaded format=pdflatex 2019.10.26)  4 NOV 2019 14:42
+entering extended mode
+ restricted \write18 enabled.
+ file:line:error style messages enabled.
+ %&-line parsing enabled.
+**"/Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/Dorogi-Kaposi, Adam_44084965_ENGG4801.tex"
+(/Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/Dorogi-Kaposi, Adam_44084965_ENGG4801.tex
+LaTeX2e <2018-12-01>
+(/usr/local/texlive/2019/texmf-dist/tex/latex/base/book.cls
+Document Class: book 2018/09/03 v1.4i Standard LaTeX document class
+(/usr/local/texlive/2019/texmf-dist/tex/latex/base/bk12.clo
+File: bk12.clo 2018/09/03 v1.4i Standard LaTeX file (size option)
+)
+\c@part=\count80
+\c@chapter=\count81
+\c@section=\count82
+\c@subsection=\count83
+\c@subsubsection=\count84
+\c@paragraph=\count85
+\c@subparagraph=\count86
+\c@figure=\count87
+\c@table=\count88
+\abovecaptionskip=\skip41
+\belowcaptionskip=\skip42
+\bibindent=\dimen102
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/graphicx.sty
+Package: graphicx 2017/06/01 v1.1a Enhanced LaTeX Graphics (DPC,SPQR)
+ (/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/keyval.sty
+Package: keyval 2014/10/28 v1.15 key=value parser (DPC)
+\KV@toks@=\toks14
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/graphics.sty
+Package: graphics 2017/06/25 v1.2c Standard LaTeX Graphics (DPC,SPQR)
+ (/usr/local/texlive/2019/texmf-dist/tex/latex/graphics/trig.sty
+Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
+)
+Package graphics Info: Driver file: pdftex.def on input line 99.
+ (/usr/local/texlive/2019/texmf-dist/tex/latex/graphics-def/pdftex.def
+File: pdftex.def 2018/01/08 v1.0l Graphics/color driver for pdftex
+))
+\Gin@req@height=\dimen103
+\Gin@req@width=\dimen104
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/datetime/datetime.sty
+Package: datetime 2015/03/20 v2.60 Date Time Package
+ (/usr/local/texlive/2019/texmf-dist/tex/latex/etoolbox/etoolbox.sty
+Package: etoolbox 2018/08/19 v2.5f e-TeX tools for LaTeX (JAW)
+\etb@tempcnta=\count89
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/fmtcount/fmtcount.sty
+Package: fmtcount 2017/12/24 v3.05
+ (/usr/local/texlive/2019/texmf-dist/tex/latex/base/ifthen.sty
+Package: ifthen 2014/09/29 v1.1c Standard LaTeX ifthen package (DPC)
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/xkeyval/xkeyval.sty
+Package: xkeyval 2014/12/03 v2.7a package option processing (HA)
+ (/usr/local/texlive/2019/texmf-dist/tex/generic/xkeyval/xkeyval.tex (/usr/local/texlive/2019/texmf-dist/tex/generic/xkeyval/xkvutils.tex
+\XKV@toks=\toks15
+\XKV@tempa@toks=\toks16
+)
+\XKV@depth=\count90
+File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
+)) (/usr/local/texlive/2019/texmf-dist/tex/latex/fmtcount/fcprefix.sty
+Package: fcprefix 2012/09/28
+ (/usr/local/texlive/2019/texmf-dist/tex/latex/fmtcount/fcnumparser.sty
+Package: fcnumparser 2017/06/15
+\fc@digit@counter=\count91
+)) (/usr/local/texlive/2019/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0 generic functions
+\@emptytoks=\toks17
+\ex@=\dimen105
+)
+\c@padzeroesN=\count92
+\fc@tmpcatcode=\count93
+\@DT@modctr=\count94
+\@ordinalctr=\count95
+\@orgargctr=\count96
+\@strctr=\count97
+\@tmpstrctr=\count98
+\@DT@loopN=\count99
+\@DT@X=\count100
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/datetime/datetime-defaults.sty
+Package: datetime-defaults 2013/09/10
+)
+\@day=\count101
+\@month=\count102
+\@year=\count103
+\c@HOUR=\count104
+\c@HOURXII=\count105
+\c@MINUTE=\count106
+\c@TOHOUR=\count107
+\c@TOMINUTE=\count108
+\c@SECOND=\count109
+\currenthour=\count110
+\currentminute=\count111
+\currentsecond=\count112
+Package datetime Info: No datetime.cfg file found, using default settings on input line 308.
+\@dtctr=\count113
+\dayofyear=\count114
+\dayofweek=\count115
+LaTeX Info: Redefining \today on input line 736.
+\dt@a=\toks18
+\dt@b=\toks19
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/listings.sty
+\lst@mode=\count116
+\lst@gtempboxa=\box27
+\lst@token=\toks20
+\lst@length=\count117
+\lst@currlwidth=\dimen106
+\lst@column=\count118
+\lst@pos=\count119
+\lst@lostspace=\dimen107
+\lst@width=\dimen108
+\lst@newlines=\count120
+\lst@lineno=\count121
+\lst@maxwidth=\dimen109
+ (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2019/02/27 1.8b (Carsten Heinz)
+\c@lstnumber=\count122
+\lst@skipnumbers=\count123
+\lst@framebox=\box28
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/listings.cfg
+File: listings.cfg 2019/02/27 1.8b listings configuration
+))
+Package: listings 2019/02/27 1.8b (Carsten Heinz)
+ (/usr/local/texlive/2019/texmf-dist/tex/latex/tools/tabularx.sty
+Package: tabularx 2016/02/03 v2.11b `tabularx' package (DPC)
+ (/usr/local/texlive/2019/texmf-dist/tex/latex/tools/array.sty
+Package: array 2018/12/30 v2.4k Tabular extension package (FMi)
+\col@sep=\dimen110
+\ar@mcellbox=\box29
+\extrarowheight=\dimen111
+\NC@list=\toks21
+\extratabsurround=\skip43
+\backup@length=\skip44
+\ar@cellbox=\box30
+)
+\TX@col@width=\dimen112
+\TX@old@table=\dimen113
+\TX@old@col=\dimen114
+\TX@target=\dimen115
+\TX@delta=\dimen116
+\TX@cols=\count124
+\TX@ftn=\toks22
+) (/usr/local/texlive/2019/texmf-dist/tex/generic/dirtree/dirtree.sty
+Package: dirtree 2012/12/11 v0.32 package wrapper for dirtree
+ (/usr/local/texlive/2019/texmf-dist/tex/generic/dirtree/dirtree.tex `dirtree' v0.32, 2012/12/11 (jcc)
+\DT@offset=\dimen117
+\DT@width=\dimen118
+\DT@sep=\dimen119
+\DT@all=\dimen120
+\DT@rulewidth=\dimen121
+\DT@dotwidth=\dimen122
+\DTbaselineskip=\dimen123
+\DT@counti=\count125
+\DT@countii=\count126
+\DT@countiii=\count127
+\DT@countiv=\count128
+\DT@indent=\dimen124
+\DT@parskip=\dimen125
+\DT@baselineskip=\dimen126
+)
+File: dirtree.tex 2012/12/11 v0.32 `dirtree' (jcc)
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/url/url.sty
+\Urlmuskip=\muskip10
+Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
+)
+\c@defn=\count129
+\c@theorem=\count130
+\c@lemma=\count131
+ (/Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/Dorogi-Kaposi, Adam_44084965_ENGG4801.aux)
+\openout1 = `"Dorogi-Kaposi, Adam_44084965_ENGG4801.aux"'.
+
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 149.
+LaTeX Font Info:    ... okay on input line 149.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 149.
+LaTeX Font Info:    ... okay on input line 149.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 149.
+LaTeX Font Info:    ... okay on input line 149.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 149.
+LaTeX Font Info:    ... okay on input line 149.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 149.
+LaTeX Font Info:    ... okay on input line 149.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 149.
+LaTeX Font Info:    ... okay on input line 149.
+ (/usr/local/texlive/2019/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
+[Loading MPS to PDF converter (version 2006.09.02).]
+\scratchcounter=\count132
+\scratchdimen=\dimen127
+\scratchbox=\box31
+\nofMPsegments=\count133
+\nofMParguments=\count134
+\everyMPshowfont=\toks23
+\MPscratchCnt=\count135
+\MPscratchDim=\dimen128
+\MPnumerator=\count136
+\makeMPintoPDFobject=\count137
+\everyMPtoPDFconversion=\toks24
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/epstopdf-base.sty
+Package: epstopdf-base 2016/05/15 v2.6 Base part for package epstopdf
+ (/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/infwarerr.sty
+Package: infwarerr 2016/05/16 v1.4 Providing info/warning/error messages (HO)
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/grfext.sty
+Package: grfext 2016/05/16 v1.2 Manage graphics extensions (HO)
+ (/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/kvdefinekeys.sty
+Package: kvdefinekeys 2016/05/16 v1.4 Define keys (HO)
+ (/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/ltxcmds.sty
+Package: ltxcmds 2016/05/16 v1.23 LaTeX kernel commands for general use (HO)
+))) (/usr/local/texlive/2019/texmf-dist/tex/latex/oberdiek/kvoptions.sty
+Package: kvoptions 2016/05/16 v3.12 Key value format for package options (HO)
+ (/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/kvsetkeys.sty
+Package: kvsetkeys 2016/05/16 v1.17 Key value parser (HO)
+ (/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/etexcmds.sty
+Package: etexcmds 2016/05/16 v1.6 Avoid name clashes with e-TeX commands (HO)
+ (/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/ifluatex.sty
+Package: ifluatex 2016/05/16 v1.4 Provides the ifluatex switch (HO)
+Package ifluatex Info: LuaTeX not detected.
+)))) (/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/pdftexcmds.sty
+Package: pdftexcmds 2018/09/10 v0.29 Utility functions of pdfTeX for LuaTeX (HO)
+ (/usr/local/texlive/2019/texmf-dist/tex/generic/oberdiek/ifpdf.sty
+Package: ifpdf 2018/09/07 v3.3 Provides the ifpdf switch
+)
+Package pdftexcmds Info: LuaTeX not detected.
+Package pdftexcmds Info: \pdf@primitive is available.
+Package pdftexcmds Info: \pdf@ifprimitive is available.
+Package pdftexcmds Info: \pdfdraftmode found.
+)
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 438.
+Package grfext Info: Graphics extension search list:
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps]
+(grfext)             \AppendGraphicsExtensions on input line 456.
+ (/usr/local/texlive/2019/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+)) (/usr/local/texlive/2019/texmf-dist/tex/latex/fmtcount/fc-english.def
+File: fc-english.def 2016/01/12
+)
+\c@lstlisting=\count138
+<PNGLogo.png, id=1, 284.5029pt x 112.2594pt>
+File: PNGLogo.png Graphic file (type png)
+<use PNGLogo.png>
+Package pdftex.def Info: PNGLogo.png  used on input line 157.
+(pdftex.def)             Requested size: 284.5022pt x 112.25911pt.
+ [1
+
+
+
+{/usr/local/texlive/2019/texmf-var/fonts/map/pdftex/updmap/pdftex.map} </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/PNGLogo.png>] [2
+
+] [3] [4
+
+] [5
+
+] [6
+
+] [7
+
+] (/Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/Dorogi-Kaposi, Adam_44084965_ENGG4801.toc
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <12> on input line 7.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <8> on input line 7.
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <6> on input line 7.
+ [8
+
+])
+\tf@toc=\write3
+\openout3 = `"Dorogi-Kaposi, Adam_44084965_ENGG4801.toc"'.
+
+ [9] (/Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/Dorogi-Kaposi, Adam_44084965_ENGG4801.lof [10
+
+])
+\tf@lof=\write4
+\openout4 = `"Dorogi-Kaposi, Adam_44084965_ENGG4801.lof"'.
+
+ [11] (/Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/Dorogi-Kaposi, Adam_44084965_ENGG4801.lot)
+\tf@lot=\write5
+\openout5 = `"Dorogi-Kaposi, Adam_44084965_ENGG4801.lot"'.
+
+ [12
+
+]
+Chapter 1.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 309.
+(/usr/local/texlive/2019/texmf-dist/tex/latex/base/omscmr.fd
+File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 309.
+
+
+LaTeX Warning: Reference `secn:future_work' on page 1 undefined on input line 334.
+
+[1
+
+
+
+] [2]
+Chapter 2.
+[3
+
+
+]
+<UVIndex.png, id=59, 601.24625pt x 250.9375pt>
+File: UVIndex.png Graphic file (type png)
+<use UVIndex.png>
+Package pdftex.def Info: UVIndex.png  used on input line 415.
+(pdftex.def)             Requested size: 426.79134pt x 178.1324pt.
+ [4 </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/UVIndex.png>]
+<FitzpatrickScale.png, id=64, 184.43304pt x 70.8246pt>
+File: FitzpatrickScale.png Graphic file (type png)
+<use FitzpatrickScale.png>
+Package pdftex.def Info: FitzpatrickScale.png  used on input line 459.
+(pdftex.def)             Requested size: 426.79134pt x 163.9165pt.
+ [5 </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/FitzpatrickScale.png>] [6] [7]
+<ERDiagramExample.jpg, id=76, 642.4pt x 372.39125pt>
+File: ERDiagramExample.jpg Graphic file (type jpg)
+<use ERDiagramExample.jpg>
+Package pdftex.def Info: ERDiagramExample.jpg  used on input line 605.
+(pdftex.def)             Requested size: 341.43436pt x 197.92896pt.
+ [8 </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/ERDiagramExample.jpg>]
+Overfull \hbox (29.16022pt too wide) in paragraph at lines 637--652
+ [] 
+ []
+
+<UVSensors.png, id=80, 857.2025pt x 727.71875pt>
+File: UVSensors.png Graphic file (type png)
+<use UVSensors.png>
+Package pdftex.def Info: UVSensors.png  used on input line 664.
+(pdftex.def)             Requested size: 256.0774pt x 217.39566pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[9]
+<ShadeOnboarding.png, id=84, 752.8125pt x 1339.0025pt>
+File: ShadeOnboarding.png Graphic file (type png)
+<use ShadeOnboarding.png>
+Package pdftex.def Info: ShadeOnboarding.png  used on input line 685.
+(pdftex.def)             Requested size: 119.97pt x 213.39566pt.
+<ShadeMeasurement.jpg, id=85, 552.0625pt x 552.0625pt>
+File: ShadeMeasurement.jpg Graphic file (type jpg)
+<use ShadeMeasurement.jpg>
+Package pdftex.def Info: ShadeMeasurement.jpg  used on input line 690.
+(pdftex.def)             Requested size: 213.39972pt x 213.39566pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[10 </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/UVSensors.png>]
+<QSunApp.jpg, id=90, 1204.5pt x 1141.26375pt>
+File: QSunApp.jpg Graphic file (type jpg)
+<use QSunApp.jpg>
+Package pdftex.def Info: QSunApp.jpg  used on input line 726.
+(pdftex.def)             Requested size: 213.39566pt x 202.17955pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[11 </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/ShadeOnboarding.png> </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/ShadeMeasurement.jpg>] [12 </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/QSunApp.jpg>]
+Chapter 3.
+<AdafruitSI1145.jpg, id=100, 233.673pt x 175.3752pt>
+File: AdafruitSI1145.jpg Graphic file (type jpg)
+<use AdafruitSI1145.jpg>
+Package pdftex.def Info: AdafruitSI1145.jpg  used on input line 772.
+(pdftex.def)             Requested size: 213.39566pt x 160.15631pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[13
+
+
+]
+<ESP32Thing.jpg, id=105, 144.54pt x 144.54pt>
+File: ESP32Thing.jpg Graphic file (type jpg)
+<use ESP32Thing.jpg>
+Package pdftex.def Info: ESP32Thing.jpg  used on input line 803.
+(pdftex.def)             Requested size: 213.39566pt x 213.40634pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<ESP32Wroom.jpg, id=106, 642.4pt x 642.4pt>
+File: ESP32Wroom.jpg Graphic file (type jpg)
+<use ESP32Wroom.jpg>
+Package pdftex.def Info: ESP32Wroom.jpg  used on input line 809.
+(pdftex.def)             Requested size: 213.39566pt x 213.39436pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[14 </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/AdafruitSI1145.jpg>]
+<EnergyDensity.png, id=110, 178.7478pt x 144.54pt>
+File: EnergyDensity.png Graphic file (type png)
+<use EnergyDensity.png>
+Package pdftex.def Info: EnergyDensity.png  used on input line 849.
+(pdftex.def)             Requested size: 213.39566pt x 172.56932pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<SolarChargeController.png, id=111, 478.78876pt x 339.2675pt>
+File: SolarChargeController.png Graphic file (type png)
+<use SolarChargeController.png>
+Package pdftex.def Info: SolarChargeController.png  used on input line 864.
+(pdftex.def)             Requested size: 213.39566pt x 151.20909pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<SystemArchitecture.png, id=112, 690.58pt x 612.2875pt>
+File: SystemArchitecture.png Graphic file (type png)
+<use SystemArchitecture.png>
+Package pdftex.def Info: SystemArchitecture.png  used on input line 876.
+(pdftex.def)             Requested size: 341.43436pt x 302.72356pt.
+[15 </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/ESP32Thing.jpg>]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[16 </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/ESP32Wroom.jpg> </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/EnergyDensity.png>] [17 </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/SolarChargeController.png>] [18 </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/SystemArchitecture.png>] [19]
+<ScrumFramework.pdf, id=132, 1228.59pt x 794.97pt>
+File: ScrumFramework.pdf Graphic file (type pdf)
+<use ScrumFramework.pdf>
+Package pdftex.def Info: ScrumFramework.pdf  used on input line 1019.
+(pdftex.def)             Requested size: 426.79134pt x 276.15726pt.
+
+Underfull \hbox (badness 4156) in paragraph at lines 1060--1061
+[]|\OT1/cmr/m/n/12 Set up database ac-cord-ing to schema.
+ []
+
+
+Overfull \hbox (1.29707pt too wide) in paragraph at lines 1038--1081
+ [] 
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[20 </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/ScrumFramework.pdf>] [21] [22]
+Chapter 4.
+<ApacheItWorks.png, id=176, 1441.385pt x 1064.97874pt>
+File: ApacheItWorks.png Graphic file (type png)
+<use ApacheItWorks.png>
+Package pdftex.def Info: ApacheItWorks.png  used on input line 1228.
+(pdftex.def)             Requested size: 426.79134pt x 315.33603pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[23
+
+
+] (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2019/02/27 1.8b listings language file
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang2.sty
+File: lstlang2.sty 2019/02/27 1.8b listings language file
+)
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <12> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 1268.
+<PHPInfo.png, id=180, 1441.385pt x 1064.97874pt>
+File: PHPInfo.png Graphic file (type png)
+<use PHPInfo.png>
+Package pdftex.def Info: PHPInfo.png  used on input line 1277.
+(pdftex.def)             Requested size: 426.79134pt x 315.33603pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[24 </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/ApacheItWorks.png>]
+Overfull \hbox (61.26553pt too wide) in paragraph at lines 1290--1292
+\OT1/cmr/m/n/12 ror would oc-cur when try-ing to log in to the [][]\OT1/cmtt/m/n/12 phpMyAdmin []\OT1/cmr/m/n/12 in-ter-face at [][]\OT1/cmtt/m/n/12 localhost:80/phpMyAdmin[]\OT1/cmr/m/n/12 . 
+ []
+
+[25 </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/PHPInfo.png>] (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2019/02/27 1.8b listings language file
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstlang1.sty
+File: lstlang1.sty 2019/02/27 1.8b listings language file
+) (/usr/local/texlive/2019/texmf-dist/tex/latex/listings/lstmisc.sty
+File: lstmisc.sty 2019/02/27 1.8b (Carsten Heinz)
+) [26]
+Overfull \hbox (42.18044pt too wide) in paragraph at lines 1364--1366
+[]\OT1/cmr/m/n/12 Place the [][]\OT1/cmtt/m/n/12 Adafruit_SI1145 []\OT1/cmr/m/n/12 li-brary folder into the [][]\OT1/cmtt/m/n/12 arduinosketchfolder/libraries/
+ []
+
+<Prototype.jpg, id=193, 3035.34pt x 4047.12pt>
+File: Prototype.jpg Graphic file (type jpg)
+<use Prototype.jpg>
+Package pdftex.def Info: Prototype.jpg  used on input line 1390.
+(pdftex.def)             Requested size: 213.39566pt x 284.50067pt.
+[27 </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/Prototype.jpg>]
+<altium_final_schematic_2.png, id=197, 3372.6pt x 2107.875pt>
+File: altium_final_schematic_2.png Graphic file (type png)
+<use altium_final_schematic_2.png>
+Package pdftex.def Info: altium_final_schematic_2.png  used on input line 1411.
+(pdftex.def)             Requested size: 426.79134pt x 266.73224pt.
+<altium_final_pdf_2.pdf, id=198, 845.1575pt x 597.23125pt>
+File: altium_final_pdf_2.pdf Graphic file (type pdf)
+<use altium_final_pdf_2.pdf>
+Package pdftex.def Info: altium_final_pdf_2.pdf  used on input line 1417.
+(pdftex.def)             Requested size: 426.79134pt x 301.59483pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<CurrentDraw.jpg, id=199, 4047.12pt x 3035.34pt>
+File: CurrentDraw.jpg Graphic file (type jpg)
+<use CurrentDraw.jpg>
+Package pdftex.def Info: CurrentDraw.jpg  used on input line 1440.
+(pdftex.def)             Requested size: 426.79134pt x 320.08641pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[28 </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/altium_final_schematic_2.png>]
+<altium_uv_sensor.png, id=206, 3372.6pt x 2107.875pt>
+File: altium_uv_sensor.png Graphic file (type png)
+<use altium_uv_sensor.png>
+Package pdftex.def Info: altium_uv_sensor.png  used on input line 1458.
+(pdftex.def)             Requested size: 426.79134pt x 266.73224pt.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<altium_usb_charger.png, id=207, 3372.6pt x 2107.875pt>
+File: altium_usb_charger.png Graphic file (type png)
+<use altium_usb_charger.png>
+Package pdftex.def Info: altium_usb_charger.png  used on input line 1464.
+(pdftex.def)             Requested size: 426.79134pt x 266.73224pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<altium_esp32.png, id=208, 3372.6pt x 2107.875pt>
+File: altium_esp32.png Graphic file (type png)
+<use altium_esp32.png>
+Package pdftex.def Info: altium_esp32.png  used on input line 1470.
+(pdftex.def)             Requested size: 426.79134pt x 266.73224pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<altium_final.png, id=209, 3372.6pt x 2107.875pt>
+File: altium_final.png Graphic file (type png)
+<use altium_final.png>
+Package pdftex.def Info: altium_final.png  used on input line 1479.
+(pdftex.def)             Requested size: 426.79134pt x 266.73224pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<er.pdf, id=210, 499.8675pt x 373.395pt>
+File: er.pdf Graphic file (type pdf)
+<use er.pdf>
+Package pdftex.def Info: er.pdf  used on input line 1497.
+(pdftex.def)             Requested size: 426.79134pt x 318.81734pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[29 </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/altium_final_pdf_2.pdf>] [30 </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/CurrentDraw.jpg>]
+Overfull \hbox (154.37064pt too wide) in paragraph at lines 1530--1532
+\OT1/cmr/m/n/12 char(254) be-cause thats the longest an email can be [https://stackoverflow.com/questions/386294/what-
+ []
+
+
+Overfull \hbox (27.83487pt too wide) in paragraph at lines 1545--1547
+[]\OT1/cmr/m/n/12 The date the ac-count was cre-ated on. De-fault value CUR-RENT[]TIMESTAMP. 
+ []
+
+[31 </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/altium_uv_sensor.png>] [32 </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/altium_usb_charger.png>]
+Overfull \hbox (27.83487pt too wide) in paragraph at lines 1590--1592
+[]\OT1/cmr/m/n/12 The date the ac-count was cre-ated on. De-fault value CUR-RENT[]TIMESTAMP. 
+ []
+
+[33 </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/altium_esp32.png>]
+Overfull \hbox (27.83487pt too wide) in paragraph at lines 1621--1623
+[]\OT1/cmr/m/n/12 The date the ac-count was cre-ated on. De-fault value CUR-RENT[]TIMESTAMP. 
+ []
+
+[34 </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/altium_final.png>] [35 </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/er.pdf
+
+pdfTeX warning: pdflatex (file /Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/er.pdf): PDF inclusion: invalid other resource which is no dict (key 'ProcSets', type <array>); ignored.
+>]
+Overfull \hbox (27.83487pt too wide) in paragraph at lines 1671--1673
+[]\OT1/cmr/m/n/12 The date the ac-count was cre-ated on. De-fault value CUR-RENT[]TIMESTAMP. 
+ []
+
+
+LaTeX Warning: \verb may be unreliable inside tabularx on input line 1697.
+
+
+Underfull \hbox (badness 2600) in paragraph at lines 1697--1697
+[]|\OT1/cmr/m/n/12 Create ac-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1697--1697
+[]|\OT1/cmr/m/n/12 Get ac-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1697--1697
+\OT1/cmr/m/n/12 count
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1697--1697
+\OT1/cmr/m/n/12 in-for-ma-
+ []
+
+
+Underfull \hbox (badness 5119) in paragraph at lines 1697--1697
+[]|\OT1/cmr/m/n/12 Delete ac-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1697--1697
+[]|\OT1/cmr/m/n/12 Update
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1697--1697
+\OT1/cmr/m/n/12 ac-count
+ []
+
+
+Overfull \hbox (54.8589pt too wide) in paragraph at lines 1710--1710
+[]\OT1/cmtt/m/n/12 password: must be at least 8 chars long (checked client side for confirmation)[] 
+ []
+
+[36] [37]
+Underfull \hbox (badness 10000) in paragraph at lines 1817--1817
+[]|\OT1/cmr/m/n/12 Create user
+ []
+
+
+Underfull \hbox (badness 7613) in paragraph at lines 1817--1817
+[]|\OT1/cmr/m/n/12 Update user
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1817--1817
+\OT1/cmr/m/n/12 with given
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1817--1817
+[]|\OT1/cmr/m/n/12 Delete user
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 1817--1817
+\OT1/cmr/m/n/12 with given
+ []
+
+[38] [39]
+Underfull \hbox (badness 10000) in paragraph at lines 1920--1920
+[]|\OT1/cmr/m/n/12 Create to-ken
+ []
+
+
+Underfull \hbox (badness 1303) in paragraph at lines 1920--1920
+\OT1/cmr/m/n/12 IDs be-long-ing
+ []
+
+[40]
+Underfull \hbox (badness 2512) in paragraph at lines 2010--2010
+[]|\OT1/cmr/m/n/12 Get all de-
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 2010--2010
+\OT1/cmr/m/n/12 vice IDs
+ []
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[41] [42]
+Overfull \hbox (39.82614pt too wide) in paragraph at lines 2088--2094
+[]\OT1/cmr/m/n/12 However, in or-der to con-form to both the API end-points spec-i-fied in Ta-ble 4.1[]...Table 4.4[]
+ []
+
+[43]
+<LowFid.png, id=288, 1253.68375pt x 730.73pt>
+File: LowFid.png Graphic file (type png)
+<use LowFid.png>
+Package pdftex.def Info: LowFid.png  used on input line 2152.
+(pdftex.def)             Requested size: 426.79134pt x 248.75711pt.
+ [44 </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/LowFid.png>] [45]
+Overfull \hbox (4.99129pt too wide) in paragraph at lines 2220--2224
+\OT1/cmr/m/n/12 ac-tion with the API ([][]\OT1/cmtt/m/n/12 api_service[]\OT1/cmr/m/n/12 ), the se-cure stor-age ([][]\OT1/cmtt/m/n/12 secure_storage_provider[]\OT1/cmr/m/n/12 ),
+ []
+
+
+LaTeX Warning: Reference `' on page 46 undefined on input line 2237.
+
+<LogInScreen.png, id=296, 547.04375pt x 967.615pt>
+File: LogInScreen.png Graphic file (type png)
+<use LogInScreen.png>
+Package pdftex.def Info: LogInScreen.png  used on input line 2241.
+(pdftex.def)             Requested size: 213.39566pt x 377.45692pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<SignUpScreen.png, id=297, 547.04375pt x 967.615pt>
+File: SignUpScreen.png Graphic file (type png)
+<use SignUpScreen.png>
+Package pdftex.def Info: SignUpScreen.png  used on input line 2247.
+(pdftex.def)             Requested size: 213.39566pt x 377.45692pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<NameScreen.png, id=298, 547.04375pt x 967.615pt>
+File: NameScreen.png Graphic file (type png)
+<use NameScreen.png>
+Package pdftex.def Info: NameScreen.png  used on input line 2253.
+(pdftex.def)             Requested size: 213.39566pt x 377.45692pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<GenderScreen.png, id=299, 547.04375pt x 967.615pt>
+File: GenderScreen.png Graphic file (type png)
+<use GenderScreen.png>
+Package pdftex.def Info: GenderScreen.png  used on input line 2259.
+(pdftex.def)             Requested size: 213.39566pt x 377.45692pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<SkinTypeScreen.png, id=300, 547.04375pt x 967.615pt>
+File: SkinTypeScreen.png Graphic file (type png)
+<use SkinTypeScreen.png>
+Package pdftex.def Info: SkinTypeScreen.png  used on input line 2265.
+(pdftex.def)             Requested size: 213.39566pt x 377.45692pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<AgeScreen.png, id=301, 547.04375pt x 967.615pt>
+File: AgeScreen.png Graphic file (type png)
+<use AgeScreen.png>
+Package pdftex.def Info: AgeScreen.png  used on input line 2271.
+(pdftex.def)             Requested size: 213.39566pt x 377.45692pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<ConnectScreen.png, id=302, 547.04375pt x 967.615pt>
+File: ConnectScreen.png Graphic file (type png)
+<use ConnectScreen.png>
+Package pdftex.def Info: ConnectScreen.png  used on input line 2278.
+(pdftex.def)             Requested size: 213.39566pt x 377.45692pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+<UVScreen.jpeg, id=303, 642.4pt x 1140.26pt>
+File: UVScreen.jpeg Graphic file (type jpg)
+<use UVScreen.jpeg>
+Package pdftex.def Info: UVScreen.jpeg  used on input line 2284.
+(pdftex.def)             Requested size: 213.39566pt x 378.77501pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[46] [47 </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/LogInScreen.png>] [48 </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/SignUpScreen.png>] [49 </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/NameScreen.png>] [50 </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/GenderScreen.png>] [51 </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/SkinTypeScreen.png>] [52 </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/AgeScreen.png>] [53 </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/ConnectScreen.png>] [54 </Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/UVScreen.jpeg>]
+Chapter 5.
+[55
+
+
+] [56]
+Appendix A.
+File: ShadeOnboarding.png Graphic file (type png)
+<use ShadeOnboarding.png>
+Package pdftex.def Info: ShadeOnboarding.png  used on input line 2343.
+(pdftex.def)             Requested size: 426.79134pt x 759.13264pt.
+
+LaTeX Warning: Float too large for page by 76.26651pt on input line 2344.
+
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+File: ShadeMeasurement.jpg Graphic file (type jpg)
+<use ShadeMeasurement.jpg>
+Package pdftex.def Info: ShadeMeasurement.jpg  used on input line 2347.
+(pdftex.def)             Requested size: 426.79134pt x 426.80788pt.
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[57
+
+
+] [58] [59]
+Appendix B.
+File: QSunApp.jpg Graphic file (type jpg)
+<use QSunApp.jpg>
+Package pdftex.def Info: QSunApp.jpg  used on input line 2354.
+(pdftex.def)             Requested size: 426.79134pt x 404.39395pt.
+[60
+
+]
+Appendix C.
+LaTeX Font Info:    Font shape `OT1/cmtt/bx/n' in size <17.28> not available
+(Font)              Font shape `OT1/cmtt/m/n' tried instead on input line 2359.
+[61
+
+]
+Overfull \hbox (17.81255pt too wide) in paragraph at lines 2409--2410
+[][][][] 
+ []
+
+
+Overfull \hbox (2.99242pt too wide) in paragraph at lines 2410--2411
+[][][][] 
+ []
+
+
+Overfull \hbox (2.99242pt too wide) in paragraph at lines 2411--2412
+[][][][] 
+ []
+
+
+Overfull \hbox (0.76222pt too wide) in paragraph at lines 2411--2412
+[][] 
+ []
+
+[62]
+Overfull \hbox (22.99242pt too wide) in paragraph at lines 2433--2434
+[][] 
+ []
+
+[63] [64] [65] [66] [67] [68]
+Overfull \hbox (25.22261pt too wide) in paragraph at lines 2617--2618
+[][][][] 
+ []
+
+[69] [70]
+Appendix D.
+[71
+
+] [72
+
+] (/Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/Dorogi-Kaposi, Adam_44084965_ENGG4801.bbl
+Underfull \hbox (badness 10000) in paragraph at lines 4--11
+\OT1/cmtt/m/n/12 techfak . uni-[]bielefeld . de / content / bworld-[]robot-[]control-[]software/$\OT1/cmr/m/n/12 ,
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 13--18
+\OT1/cmtt/m/n/12 environment . gov . au / protection / ozone / ozone-[]science / ozone-[]layer$\OT1/cmr/m/n/12 .
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 28--34
+[]\OT1/cmr/m/n/12 Cancer Coun-cil.  Uv ra-di-a-tion.  $\OT1/cmtt/m/n/12 https : / / www . cancer . org . au /
+ []
+
+
+Underfull \hbox (badness 1776) in paragraph at lines 42--48
+[]\OT1/cmr/m/n/12 NASA.  Ref-er-ence so-lar spec-tral ir-ra-di-ance: Air mass 1.5.  $\OT1/cmtt/m/n/12 https :
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 42--48
+\OT1/cmtt/m/n/12 / / web . archive . org / web / 20110127004149 / http : / / missionscience . nasa .
+ []
+
+[73
+
+]
+Underfull \hbox (badness 3547) in paragraph at lines 76--81
+\OT1/cmtt/m/n/12 / / www . link-[]labs . com / blog / bluetooth-[]vs-[]bluetooth-[]low-[]energy$\OT1/cmr/m/n/12 , 2015.
+ []
+
+
+Underfull \hbox (badness 6893) in paragraph at lines 95--101
+\OT1/cmtt/m/n/12 msande91si / www-[]spr04 / readings / week1 / InternetWhitepaper . htm$\OT1/cmr/m/n/12 , 2002.
+ []
+
+
+Underfull \hbox (badness 2080) in paragraph at lines 134--140
+[]\OT1/cmr/m/n/12 Saravanakumar Kan-dasamy.  En-tity re-la-tion-ship di-a-gram to re-la-tional
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 134--140
+\OT1/cmr/m/n/12 schema - ex-er-cise 7.  $\OT1/cmtt/m/n/12 http : / / www . exploredatabase . com / 2016 / 05 /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 134--140
+\OT1/cmtt/m/n/12 how-[]to-[]convert-[]entity-[]relationship-[]diagram-[]to-[]relational-[]schema .
+ []
+
+
+Underfull \hbox (badness 1122) in paragraph at lines 155--160
+[]\OT1/cmr/m/n/12 Wearshade.com.  In-di-vid-ual sen-si-tiv-ity to uv ex-po-sure.  $\OT1/cmtt/m/n/12 https : / / www .
+ []
+
+[74]
+Underfull \hbox (badness 10000) in paragraph at lines 180--186
+\OT1/cmtt/m/n/12 adafruit-[]si1145-[]breakout-[]board-[]uv-[]ir-[]visible-[]sensor / overview$\OT1/cmr/m/n/12 .
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 200--205
+[]\OT1/cmr/m/n/12 Digi-Key.  Esp32-wroom-32.  $\OT1/cmtt/m/n/12 https : / / www . digikey . com .
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 200--205
+\OT1/cmtt/m/n/12 au / product-[]detail / en / espressif-[]systems / ESP32-[]WROOM-[]32 /
+ []
+
+
+Underfull \hbox (badness 5847) in paragraph at lines 220--225
+[]\OT1/cmr/m/n/12 Solar-electric.com.  So-lar charge con-troller ba-sics | north-ern ari-
+ []
+
+
+Underfull \hbox (badness 2951) in paragraph at lines 227--231
+[]\OT1/cmr/m/n/12 Sparkfun.  I2c - learn.sparkfun.com.  $\OT1/cmtt/m/n/12 https : / / learn . sparkfun . com /
+ []
+
+[75]
+Underfull \hbox (badness 10000) in paragraph at lines 240--245
+[]\OT1/cmr/m/n/12 Argenox.  Ble ad-ver-tis-ing.  $\OT1/cmtt/m/n/12 https : / / www . argenox . com /
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 240--245
+\OT1/cmtt/m/n/12 library / bluetooth-[]low-[]energy / ble-[]advertising-[]primer /
+ []
+
+
+Underfull \hbox (badness 7308) in paragraph at lines 247--253
+[]\OT1/cmr/m/n/12 MartinBL.  Blue-tooth low en-ergy ser-vices, a be-gin-ner's tu-to-rial.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 247--253
+\OT1/cmtt/m/n/12 https : / / devzone . nordicsemi . com / tutorials / b / bluetooth-[]low-[]energy /
+ []
+
+
+Underfull \hbox (badness 2707) in paragraph at lines 247--253
+\OT1/cmtt/m/n/12 posts / ble-[]services-[]a-[]beginners-[]tutorial$\OT1/cmr/m/n/12 , 2015.  [On-line; ac-cessed
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 261--266
+\OT1/cmtt/m/n/12 com / specifications / gatt / viewer ? attributeXmlFile = org . bluetooth .
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 268--273
+\OT1/cmtt/m/n/12 com / specifications / gatt / viewer ? attributeXmlFile = org . bluetooth .
+ []
+
+
+Underfull \hbox (badness 2460) in paragraph at lines 290--294
+[]\OT1/cmr/m/n/12 Scrum.org.  What is scrum?  $\OT1/cmtt/m/n/12 https : / / www . scrum . org / resources /
+ []
+
+
+Underfull \hbox (badness 7981) in paragraph at lines 308--314
+\OT1/cmtt/m/n/12 blob / master / libraries / BLE / examples / BLE _ write / BLE _ write . ino$\OT1/cmr/m/n/12 , 2019.
+ []
+
+[76]
+Underfull \hbox (badness 10000) in paragraph at lines 316--321
+[]\OT1/cmr/m/n/12 Adafruit.  Adafruit si1145 li-brary.  $\OT1/cmtt/m/n/12 https : / / learn . adafruit .
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 316--321
+\OT1/cmtt/m/n/12 com / adafruit-[]si1145-[]breakout-[]board-[]uv-[]ir-[]visible-[]sensor /
+ []
+
+) [77] (/Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/Dorogi-Kaposi, Adam_44084965_ENGG4801.aux)
+
+LaTeX Warning: There were undefined references.
+
+ ) 
+Here is how much of TeX's memory you used:
+ 7177 strings out of 492616
+ 108713 string characters out of 6129480
+ 542157 words of memory out of 5000000
+ 10967 multiletter control sequences out of 15000+600000
+ 10226 words of font info for 37 fonts, out of 8000000 for 9000
+ 1141 hyphenation exceptions out of 8191
+ 46i,10n,99p,1094b,2969s stack positions out of 5000i,500n,10000p,200000b,80000s
+</usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmitt10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsltt10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/2019/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on "/Users/adamdorogi/Documents/UQ/2019/ENGG4801/Thesis/Dorogi-Kaposi, Adam_44084965_ENGG4801.pdf" (89 pages, 27241894 bytes).
+PDF statistics:
+ 457 PDF objects out of 1000 (max. 8388607)
+ 287 compressed objects within 3 object streams
+ 0 named destinations out of 1000 (max. 500000)
+ 176 words of extra memory for PDF output out of 10000 (max. 10000000)
+

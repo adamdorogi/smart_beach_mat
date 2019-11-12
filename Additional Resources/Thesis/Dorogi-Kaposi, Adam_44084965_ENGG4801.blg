@@ -1,0 +1,46 @@
+This is BibTeX, Version 0.99d (TeX Live 2019)
+Capacity: max_strings=100000, hash_size=100000, hash_prime=85009
+The top-level auxiliary file: Dorogi-Kaposi, Adam_44084965_ENGG4801.aux
+The style file: unsrt.bst
+Database file #1: thebibliography.bib
+You've used 47 entries,
+            1791 wiz_defined-function locations,
+            650 strings with 10328 characters,
+and the built_in function-call counts, 6402 in all, are:
+= -- 581
+> -- 192
+< -- 0
++ -- 95
+- -- 48
+* -- 20
+:= -- 1017
+add.period$ -- 188
+call.type$ -- 47
+change.case$ -- 47
+chr.to.int$ -- 0
+cite$ -- 47
+duplicate$ -- 235
+empty$ -- 847
+format.name$ -- 48
+if$ -- 1525
+int.to.chr$ -- 0
+int.to.str$ -- 47
+missing$ -- 0
+newline$ -- 285
+num.names$ -- 47
+pop$ -- 313
+preamble$ -- 1
+purify$ -- 0
+quote$ -- 0
+skip$ -- 94
+stack$ -- 0
+substring$ -- 0
+swap$ -- 47
+text.length$ -- 0
+text.prefix$ -- 0
+top$ -- 0
+type$ -- 0
+warning$ -- 0
+while$ -- 47
+width$ -- 49
+write$ -- 535

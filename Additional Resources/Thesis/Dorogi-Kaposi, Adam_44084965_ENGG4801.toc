@@ -1,0 +1,83 @@
+\contentsline {chapter}{Acknowledgments}{v}% 
+\contentsline {chapter}{Abstract}{vii}% 
+\contentsline {chapter}{List of Figures}{xi}% 
+\contentsline {chapter}{List of Tables}{xii}% 
+\contentsline {chapter}{\numberline {1}Introduction}{1}% 
+\contentsline {chapter}{\numberline {2}Background}{3}% 
+\contentsline {section}{\numberline {2.1}UV Radiation}{3}% 
+\contentsline {section}{\numberline {2.2}UV Index}{4}% 
+\contentsline {section}{\numberline {2.3}Fitzpatrick Scale}{4}% 
+\contentsline {section}{\numberline {2.4}Relevant Technologies}{5}% 
+\contentsline {subsection}{\numberline {2.4.1}Bluetooth Low Energy}{5}% 
+\contentsline {subsection}{\numberline {2.4.2}Hypertext Transfer Protocol}{6}% 
+\contentsline {subsection}{\numberline {2.4.3}Flutter}{7}% 
+\contentsline {subsection}{\numberline {2.4.4}PHP}{7}% 
+\contentsline {subsection}{\numberline {2.4.5}MySQL}{8}% 
+\contentsline {section}{\numberline {2.5}Prior Art}{9}% 
+\contentsline {subsection}{\numberline {2.5.1}Shade}{9}% 
+\contentsline {subsection}{\numberline {2.5.2}QSun}{10}% 
+\contentsline {chapter}{\numberline {3}Methodology and Design}{13}% 
+\contentsline {section}{\numberline {3.1}Product Design}{13}% 
+\contentsline {subsection}{\numberline {3.1.1}Sensor and Data Acquisition}{13}% 
+\contentsline {subsection}{\numberline {3.1.2}Microcontroller}{13}% 
+\contentsline {subsection}{\numberline {3.1.3}Power Supply}{14}% 
+\contentsline {subsection}{\numberline {3.1.4}System Architecture}{15}% 
+\contentsline {subsubsection}{I2C}{16}% 
+\contentsline {subsubsection}{BLE}{17}% 
+\contentsline {subsubsection}{HTTP}{18}% 
+\contentsline {section}{\numberline {3.2}Project Plan}{19}% 
+\contentsline {subsection}{\numberline {3.2.1}Software Development Process}{19}% 
+\contentsline {subsection}{\numberline {3.2.2}Sprint Plan}{20}% 
+\contentsline {subsection}{\numberline {3.2.3}Code Management}{21}% 
+\contentsline {chapter}{\numberline {4}Results and Discussion}{23}% 
+\contentsline {section}{\numberline {4.1}Development Environment}{23}% 
+\contentsline {subsubsection}{Change the Document Root Directory}{23}% 
+\contentsline {subsubsection}{Enable PHP}{24}% 
+\contentsline {subsubsection}{Installing MySQL}{25}% 
+\contentsline {section}{\numberline {4.2}Hardware}{26}% 
+\contentsline {subsection}{\numberline {4.2.1}Prototype}{26}% 
+\contentsline {subsection}{\numberline {4.2.2}Final}{27}% 
+\contentsline {section}{\numberline {4.3}Database}{29}% 
+\contentsline {subsection}{\numberline {4.3.1}Schema}{29}% 
+\contentsline {subsection}{\numberline {4.3.2}Management}{30}% 
+\contentsline {subsection}{\numberline {4.3.3}Tables}{30}% 
+\contentsline {subsubsection}{Account}{30}% 
+\contentsline {subsubsection}{User}{32}% 
+\contentsline {subsubsection}{Reading}{33}% 
+\contentsline {subsubsection}{User Reading}{34}% 
+\contentsline {subsubsection}{Token}{35}% 
+\contentsline {section}{\numberline {4.4}REST API}{36}% 
+\contentsline {subsection}{\numberline {4.4.1}Account}{36}% 
+\contentsline {subsubsection}{Create an Account}{36}% 
+\contentsline {subsubsection}{Get an Account's Information}{37}% 
+\contentsline {subsubsection}{Update Account Email}{37}% 
+\contentsline {subsubsection}{Update Account Password}{37}% 
+\contentsline {subsubsection}{Delete an Account}{38}% 
+\contentsline {subsection}{\numberline {4.4.2}User}{38}% 
+\contentsline {subsubsection}{Create a User}{38}% 
+\contentsline {subsubsection}{Get a User's Information}{39}% 
+\contentsline {subsubsection}{Update a User}{39}% 
+\contentsline {subsubsection}{Delete a User}{40}% 
+\contentsline {subsection}{\numberline {4.4.3}Token}{40}% 
+\contentsline {subsubsection}{Create a Token (Login)}{40}% 
+\contentsline {subsubsection}{Get a Token}{41}% 
+\contentsline {subsubsection}{Delete a Token}{41}% 
+\contentsline {subsection}{\numberline {4.4.4}Reading}{41}% 
+\contentsline {subsubsection}{Create a Reading}{41}% 
+\contentsline {subsubsection}{Get a Reading}{42}% 
+\contentsline {subsection}{\numberline {4.4.5}Structure}{43}% 
+\contentsline {section}{\numberline {4.5}Smartphone Application}{44}% 
+\contentsline {subsection}{\numberline {4.5.1}Design}{44}% 
+\contentsline {subsection}{\numberline {4.5.2}Final}{44}% 
+\contentsline {subsection}{\numberline {4.5.3}Project Structure}{45}% 
+\contentsline {chapter}{\numberline {5}Conclusions}{55}% 
+\contentsline {section}{\numberline {5.1}Summary and Conclusions}{55}% 
+\contentsline {part}{Appendices}{56}% 
+\contentsline {chapter}{\numberline {A}Shade's iOS Application Screenshots}{57}% 
+\contentsline {chapter}{\numberline {B}QSun's iOS Application Screenshots}{60}% 
+\contentsline {chapter}{\numberline {C}Code Listings}{61}% 
+\contentsline {section}{\numberline {C.1}\texttt {BLE\_write.ino}}{61}% 
+\contentsline {section}{\numberline {C.2}\texttt {si1145test.ino}}{63}% 
+\contentsline {section}{\numberline {C.3}\texttt {smart\_beachmat\_hardware.ino}}{65}% 
+\contentsline {chapter}{\numberline {D}Companion Disk}{71}% 
+\contentsline {chapter}{Bibliography}{73}% 

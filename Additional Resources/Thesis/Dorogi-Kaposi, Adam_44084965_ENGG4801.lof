@@ -1,0 +1,45 @@
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {2.1}{\ignorespaces The UV Index ranges}}{4}% 
+\contentsline {figure}{\numberline {2.2}{\ignorespaces The Fitzpatrick scale and the risk of skin cancer}}{5}% 
+\contentsline {figure}{\numberline {2.3}{\ignorespaces Example ER diagram}}{8}% 
+\contentsline {figure}{\numberline {2.4}{\ignorespaces Accuracy of commercial UV sensors, with the X1-4 UVE radiometer used as reference}}{10}% 
+\contentsline {figure}{\numberline {2.5}{\ignorespaces Screenshot of on-boarding screen in Shade's iOS application}}{11}% 
+\contentsline {figure}{\numberline {2.6}{\ignorespaces Screenshot of measurement screen in Shade's iOS application}}{11}% 
+\contentsline {figure}{\numberline {2.7}{\ignorespaces Screenshots of the sunscreen recommendations (left), real time UV Index (middle), and sunscreen amount estimation (right) screens in QSun's iOS application}}{12}% 
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {3.1}{\ignorespaces The Adafruit SI1145 visible light and IR sensor}}{14}% 
+\contentsline {figure}{\numberline {3.2}{\ignorespaces The ESP32 Thing development board}}{15}% 
+\contentsline {figure}{\numberline {3.3}{\ignorespaces The ESP32 WROOM microcontroller}}{16}% 
+\contentsline {figure}{\numberline {3.4}{\ignorespaces Energy density of batteries by size and weight}}{16}% 
+\contentsline {figure}{\numberline {3.5}{\ignorespaces Solar charge controller setup with ESP32}}{17}% 
+\contentsline {figure}{\numberline {3.6}{\ignorespaces System architecture diagram}}{18}% 
+\contentsline {figure}{\numberline {3.7}{\ignorespaces Scrum framework workflow}}{20}% 
+\addvspace {10\p@ }
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Safari screenshot at localhost:80 after starting local Apache server}}{24}% 
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Safari screenshot at localhost:80 after enabling PHP}}{25}% 
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Prototype of UV sensing IoT device}}{27}% 
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Schematic of final PCB during development in Altium Studio}}{28}% 
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Schematic of final PCB}}{29}% 
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Current draw of prototype}}{30}% 
+\contentsline {figure}{\numberline {4.7}{\ignorespaces PCB print of SI1145 UV Sensor}}{31}% 
+\contentsline {figure}{\numberline {4.8}{\ignorespaces PCB Print of USB charger}}{32}% 
+\contentsline {figure}{\numberline {4.9}{\ignorespaces PCB Print of ESP32}}{33}% 
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Final PCB design}}{34}% 
+\contentsline {figure}{\numberline {4.11}{\ignorespaces ER Diagram of Database Schema}}{35}% 
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Low-fidelity prototype of smartphone application}}{44}% 
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Screenshot of log in screen}}{47}% 
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Screenshot of sign up screen}}{48}% 
+\contentsline {figure}{\numberline {4.15}{\ignorespaces Screenshot of name screen at sign up}}{49}% 
+\contentsline {figure}{\numberline {4.16}{\ignorespaces Screenshot of gender screen at sign up}}{50}% 
+\contentsline {figure}{\numberline {4.17}{\ignorespaces Screenshot of skin type screen at sign up}}{51}% 
+\contentsline {figure}{\numberline {4.18}{\ignorespaces Screenshot of age at sign up}}{52}% 
+\contentsline {figure}{\numberline {4.19}{\ignorespaces Screenshot of device connection screen}}{53}% 
+\contentsline {figure}{\numberline {4.20}{\ignorespaces Screenshot of UV screen}}{54}% 
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
+\addvspace {10\p@ }
